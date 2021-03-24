@@ -433,3 +433,9 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 
 Server/appsettings.json
+Server/bin/*
+Server/obj/*
+Shared/bin/*
+Shared/obj/*
+Client/bin/*
+Client/obj/*
