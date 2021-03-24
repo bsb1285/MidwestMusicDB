@@ -62,6 +62,13 @@ using MidwestMusicDB.Client.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 8 "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/_Imports.razor"
+using MidwestMusicDB.Shared.Models;
+
+#line default
+#line hidden
+#nullable disable
     public partial class App : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

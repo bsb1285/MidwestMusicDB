@@ -2978,6 +2978,39 @@
         }
       },
       {
+        "HashCode": -55797804,
+        "Kind": "Components.Component",
+        "Name": "MidwestMusicDB.Client.Pages.User.FetchData",
+        "AssemblyName": "MidwestMusicDB.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "FetchData"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "MidwestMusicDB.Client.Pages.User.FetchData"
+        }
+      },
+      {
+        "HashCode": -476353515,
+        "Kind": "Components.Component",
+        "Name": "MidwestMusicDB.Client.Pages.User.FetchData",
+        "AssemblyName": "MidwestMusicDB.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "MidwestMusicDB.Client.Pages.User.FetchData"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "MidwestMusicDB.Client.Pages.User.FetchData",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
         "HashCode": -1276767272,
         "Kind": "Components.Component",
         "Name": "MidwestMusicDB.Client.Shared.MainLayout",
@@ -3074,39 +3107,6 @@
         }
       },
       {
-        "HashCode": -1588696424,
-        "Kind": "Components.Component",
-        "Name": "MidwestMusicDB.Client.Shared.NavMenu",
-        "AssemblyName": "MidwestMusicDB.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "MidwestMusicDB.Client.Shared.NavMenu"
-        }
-      },
-      {
-        "HashCode": 1391295739,
-        "Kind": "Components.Component",
-        "Name": "MidwestMusicDB.Client.Shared.NavMenu",
-        "AssemblyName": "MidwestMusicDB.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "MidwestMusicDB.Client.Shared.NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "MidwestMusicDB.Client.Shared.NavMenu",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 1442139348,
         "Kind": "Components.Component",
         "Name": "MidwestMusicDB.Client.Shared.SurveyPrompt",
@@ -3156,6 +3156,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "MidwestMusicDB.Client.Shared.SurveyPrompt",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1588696424,
+        "Kind": "Components.Component",
+        "Name": "MidwestMusicDB.Client.Shared.NavMenu",
+        "AssemblyName": "MidwestMusicDB.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "MidwestMusicDB.Client.Shared.NavMenu"
+        }
+      },
+      {
+        "HashCode": 1391295739,
+        "Kind": "Components.Component",
+        "Name": "MidwestMusicDB.Client.Shared.NavMenu",
+        "AssemblyName": "MidwestMusicDB.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "MidwestMusicDB.Client.Shared.NavMenu"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "MidwestMusicDB.Client.Shared.NavMenu",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },

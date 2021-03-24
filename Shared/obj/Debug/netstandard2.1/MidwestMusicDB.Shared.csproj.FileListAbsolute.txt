@@ -1,0 +1,8 @@
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/bin/Debug/netstandard2.1/MidwestMusicDB.Shared.deps.json
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/bin/Debug/netstandard2.1/MidwestMusicDB.Shared.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/bin/Debug/netstandard2.1/MidwestMusicDB.Shared.pdb
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/obj/Debug/netstandard2.1/MidwestMusicDB.Shared.csprojAssemblyReference.cache
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/obj/Debug/netstandard2.1/MidwestMusicDB.Shared.AssemblyInfoInputs.cache
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/obj/Debug/netstandard2.1/MidwestMusicDB.Shared.AssemblyInfo.cs
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/obj/Debug/netstandard2.1/MidwestMusicDB.Shared.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/obj/Debug/netstandard2.1/MidwestMusicDB.Shared.pdb
