@@ -1,0 +1,218 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/MidwestMusicDB.Server.csproj": {}
+  },
+  "projects": {
+    "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/MidwestMusicDB.Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/MidwestMusicDB.Client.csproj",
+        "projectName": "MidwestMusicDB.Client",
+        "projectPath": "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/MidwestMusicDB.Client.csproj",
+        "packagesPath": "/Users/benbaker/.nuget/packages/",
+        "outputPath": "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/benbaker/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {
+              "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/MidwestMusicDB.Shared.csproj": {
+                "projectPath": "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/MidwestMusicDB.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Blazor": {
+              "target": "Package",
+              "version": "[3.1.0-preview4.19579.2, )"
+            },
+            "Microsoft.AspNetCore.Blazor.Build": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.0-preview4.19579.2, )"
+            },
+            "Microsoft.AspNetCore.Blazor.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.0-preview4.19579.2, )"
+            },
+            "Microsoft.AspNetCore.Blazor.HttpClient": {
+              "target": "Package",
+              "version": "[3.1.0-preview4.19579.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/MidwestMusicDB.Server.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/MidwestMusicDB.Server.csproj",
+        "projectName": "MidwestMusicDB.Server",
+        "projectPath": "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/MidwestMusicDB.Server.csproj",
+        "packagesPath": "/Users/benbaker/.nuget/packages/",
+        "outputPath": "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/benbaker/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/MidwestMusicDB.Client.csproj": {
+                "projectPath": "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/MidwestMusicDB.Client.csproj"
+              },
+              "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/MidwestMusicDB.Shared.csproj": {
+                "projectPath": "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/MidwestMusicDB.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Blazor.Server": {
+              "target": "Package",
+              "version": "[3.1.0-preview4.19579.2, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "(, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/MidwestMusicDB.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/MidwestMusicDB.Shared.csproj",
+        "projectName": "MidwestMusicDB.Shared",
+        "projectPath": "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/MidwestMusicDB.Shared.csproj",
+        "packagesPath": "/Users/benbaker/.nuget/packages/",
+        "outputPath": "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Shared/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/benbaker/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
