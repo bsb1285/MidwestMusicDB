@@ -75,3 +75,5 @@
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/obj/Debug/netcoreapp3.1/MidwestMusicDB.Server.csproj.CopyComplete
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/obj/Debug/netcoreapp3.1/MidwestMusicDB.Server.dll
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/obj/Debug/netcoreapp3.1/MidwestMusicDB.Server.pdb
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Npgsql.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Npgsql.EntityFrameworkCore.PostgreSQL.dll
