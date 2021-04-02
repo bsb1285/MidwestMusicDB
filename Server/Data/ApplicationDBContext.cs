@@ -44,19 +44,26 @@ namespace MidwestMusicDB.Server.Data
                     .HasKey(up => up.username);
             modelBuilder.Entity<UsersPlaylist>()
                     .HasAlternateKey(up => up.id);
+            modelBuilder.Entity<SongGenre>().HasKey(sg => sg.name);
+            modelBuilder.Entity<SongGenre>().HasAlternateKey(sg => sg.title);
+            
+            
+            
+            
 
         }
         public DbSet<User> Users { get; set; }
-        public DbSet<Album> Albums { get; set; }
-        public DbSet<Artist> Artists { get; set; }
-        public DbSet<ArtistsAlbum> ArtistsAlbums { get; set; }
-        public DbSet<ArtistsSong> ArtistsSongs { get; set; }
-        public DbSet<Genre> Genres { get; set; }
+        public DbSet<Album> Album { get; set; }
+        public DbSet<Artist> Artist { get; set; }
+        public DbSet<ArtistsAlbum> ArtistsAlbum { get; set; }
+        public DbSet<ArtistsSong> ArtistsSong { get; set; }
+        public DbSet<Genre> Genre { get; set; }
         public DbSet<Playlist> Playlists { get; set; }
         public DbSet<Song> Song { get; set; }
-        public DbSet<SongOnAlbum> SongOnAlbums { get; set; }
-        public DbSet<SongOnPlaylist> SongOnPlaylists { get; set; }
-        public DbSet<UsersPlaylist> UsersPlaylists { get; set; }
+        public DbSet<SongOnAlbum> SongOnAlbum { get; set; }
+        public DbSet<SongOnPlaylist> SongOnPlaylist { get; set; }
+        public DbSet<UsersPlaylist> UsersPlaylist { get; set; }
+        public DbSet<SongGenre> SongGenre { get; set; }
 
     }
 }
