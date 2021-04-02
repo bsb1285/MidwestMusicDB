@@ -21,7 +21,7 @@ namespace MidwestMusicDB.Server.Controllers
         [HttpGet("{username}")]
         public async Task<IActionResult> Get(string username)
         {
-            var usersPlaylists = await _context.UsersPlaylists.ToListAsync();
+            var usersPlaylists = await _context.UsersPlaylist.ToListAsync();
             var ids = usersPlaylists.FindAll(playlist => playlist.username == username);
 
             var playlists = await _context.Playlists.ToListAsync();
@@ -37,7 +37,8 @@ namespace MidwestMusicDB.Server.Controllers
         [HttpGet("{username}/{id}")]
         public async Task<IActionResult> Get(string username, int id)
         {
-            //var playlists = await _context.Playlists.AllAsync(p => p.)
+            var userPlaylists =  _context.UsersPlaylist.Where(up => up.username == username).Select(up => up.id);
+            var playlists = _context.Playlists.Where(p => userPlaylists.Contains(p.id));
             return BadRequest();
         }
 
