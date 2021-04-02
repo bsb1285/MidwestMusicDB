@@ -1,0 +1,47 @@
+@page "/playlists/{username}"
+<h3>FetchData</h3>
+
+@if (playlists == null)
+{
+    <text>Loading ...</text>
+}
+else if (playlists.Length == 0)
+{
+    <text>No Records Found.</text>
+}
+else
+{
+   /* <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (User u in users)
+            {
+                <tr>
+                    <td>@u.username</td>
+                    <td>@u.first_name</td>
+                    <td>@u.last_name</td>
+                    <td>@u.email</td>
+                    <td>@u.last_access_date</td>
+                    <td>
+                        <a class="btn btn-success" href="user/edit/@u.username">Edit</a>
+                        <button class="btn btn-danger" @onclick="@(() => Delete(u.username))">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    */
+}
+
+@code {
+    [Parameter] public string username { get; set; }
+    Playlist[] playlists { get; set; }
+}

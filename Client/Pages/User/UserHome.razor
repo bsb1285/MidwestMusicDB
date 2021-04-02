@@ -1,0 +1,14 @@
+@page "/user/{username}"
+@inject HttpClient client
+@inject IJSRuntime js
+
+<h3>UserHome</h3>
+
+@code {
+    Playlist[] _playlists { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+    //users = await client.GetFromJsonAsync<User[]>("api/user");
+        //_playlists = await client.GetJsonAsync<User[]>("api/playlists");
+    }
+}

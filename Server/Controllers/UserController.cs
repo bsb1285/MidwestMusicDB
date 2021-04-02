@@ -68,6 +68,8 @@ namespace MidwestMusicDB.Server.Controllers
             if (u != null)
             {
                 Console.WriteLine("Good user input");
+                u.last_access_date = DateTime.Today;
+                await Put(u);
                 return Ok();
             }
             Console.WriteLine("Bad user input");

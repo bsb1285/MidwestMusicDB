@@ -1,0 +1,91 @@
+@page "/song/{username}"
+@using System.ComponentModel
+
+@inject HttpClient client
+@inject IJSRuntime js
+@inject NavigationManager uriHelper
+
+<h3>Song List</h3>
+
+@if (songs == null)
+{
+    <text>Loading ...</text>
+}
+else if (songs.Length == 0)
+{
+    <text>No Records Found.</text>
+}
+else
+{
+    
+    <Form ButtonText="Search" searchModel="@_searchModel" OnValidSubmit="@Search"/>
+    
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Artist Name</th>
+            <th>Album Name</th>
+            <th>Duration</th>
+            <th>Release Date</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (Song s in songs)
+        {
+            <tr>
+                <td>@s.title</td>
+                <td>Artist</td>
+                <td>Album</td>
+                <td>@s.length</td>
+                <td>@s.song_release_date</td>
+                <td>
+                    <a class="btn btn-success" href="playlists/@username">Edit</a>
+                    <button class="btn btn-danger" @onclick="@(() => Console.WriteLine("Temp"))">Delete</button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    
+}
+@code {
+    [Parameter]
+    public string username { get; set; }
+
+    SearchModel _searchModel = new SearchModel();
+    public string SearchString { get; set; }
+    
+
+    Song[] songs { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        songs = await client.GetJsonAsync<Song[]>("api/song");
+    }
+    
+    public async Task OnGetAsync()
+    {
+        var songs_new = from s in songs
+            select s;
+        
+        if (!string.IsNullOrEmpty(_searchModel.SearchString))
+        {
+            songs_new = songs_new.Where(s => s.title.Contains(_searchModel.SearchString));
+            Console.WriteLine(songs_new);
+        }
+        
+        songs =  songs_new.ToArray();
+        Console.WriteLine("Done Search");
+        uriHelper.NavigateTo($"song/{username}");
+    }
+    
+    async Task Search()
+    {
+        Console.WriteLine($"SearchString: {_searchModel.SearchString}");
+        await OnGetAsync();
+        //songs = await client.GetJsonAsync<Song[]>($"api/search/{SearchString}");
+
+    }
+
+}

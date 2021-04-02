@@ -5,7 +5,7 @@ namespace MidwestMusicDB.Shared.Models
     public class Song
     {
         public string title { get; set; }
-        public TimeSpan length { get; set; }
-        public DateTime song_release_date { get; set; }
+        public int length { get; set; }
+        public int song_release_date { get; set; }
     }
 }
