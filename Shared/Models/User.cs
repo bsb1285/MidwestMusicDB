@@ -5,7 +5,7 @@ using System;
 
 namespace MidwestMusicDB.Shared.Models
 {
-    public class User
+    public class User 
     {
         public string username { get; set; }
         public string password { get; set; }

@@ -1,0 +1,19 @@
+@page "/user/create"
+@inject HttpClient http
+@inject NavigationManager uriHelper
+
+<h3>Create</h3>
+
+<Form ButtonText="Create User" user="@user"
+      OnValidSubmit="@CreateUser" />
+
+@code {
+    User user = new User();
+    async Task CreateUser()
+    {
+        user.last_access_date = DateTime.Today;
+        user.signup_date = DateTime.Today;
+        await http.PostJsonAsync("api/user", user);
+        uriHelper.NavigateTo("user");
+    }
+}

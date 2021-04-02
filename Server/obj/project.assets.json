@@ -11,12 +11,12 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Authorization/3.1.0": {
+      "Microsoft.AspNetCore.Authorization/3.1.13": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "3.1.0",
-          "Microsoft.Extensions.Logging.Abstractions": "3.1.0",
-          "Microsoft.Extensions.Options": "3.1.0"
+          "Microsoft.AspNetCore.Metadata": "3.1.13",
+          "Microsoft.Extensions.Logging.Abstractions": "3.1.13",
+          "Microsoft.Extensions.Options": "3.1.13"
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.AspNetCore.Authorization.dll": {}
@@ -67,12 +67,12 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Microsoft.AspNetCore.Components/3.1.0": {
+      "Microsoft.AspNetCore.Components/3.1.13": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "3.1.0",
-          "Microsoft.AspNetCore.Components.Analyzers": "3.1.0",
-          "Microsoft.JSInterop": "3.1.0"
+          "Microsoft.AspNetCore.Authorization": "3.1.13",
+          "Microsoft.AspNetCore.Components.Analyzers": "3.1.13",
+          "Microsoft.JSInterop": "3.1.13"
         },
         "compile": {
           "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.dll": {}
@@ -81,10 +81,23 @@
           "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/3.1.0": {
+      "Microsoft.AspNetCore.Components.Analyzers/3.1.13": {
         "type": "package",
         "build": {
-          "build/netstandard2.0/_._": {}
+          "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.Authorization/3.1.13": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authorization": "3.1.13",
+          "Microsoft.AspNetCore.Components": "3.1.13"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Authorization.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Authorization.dll": {}
         }
       },
       "Microsoft.AspNetCore.Components.Forms/3.1.0": {
@@ -114,14 +127,78 @@
           "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Web.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/3.1.0": {
+      "Microsoft.AspNetCore.Cryptography.Internal/5.0.4": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.dll": {}
+          "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.Internal.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.dll": {}
+          "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.Internal.dll": {}
         }
+      },
+      "Microsoft.AspNetCore.Cryptography.KeyDerivation/5.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.Internal": "5.0.4"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore/5.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "5.0.4",
+          "Microsoft.Extensions.Identity.Stores": "5.0.4"
+        },
+        "compile": {
+          "lib/netstandard2.1/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.JsonPatch/5.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.7.0",
+          "Newtonsoft.Json": "12.0.2"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Metadata/3.1.13": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Metadata.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Metadata.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Mvc.NewtonsoftJson/3.1.13": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.JsonPatch": "3.1.13",
+          "Newtonsoft.Json": "12.0.2",
+          "Newtonsoft.Json.Bson": "1.0.2"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Microsoft.CSharp/4.7.0": {
         "type": "package",
@@ -353,6 +430,35 @@
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
         }
       },
+      "Microsoft.Extensions.Identity.Core/5.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "5.0.4",
+          "Microsoft.Extensions.Logging": "5.0.0",
+          "Microsoft.Extensions.Options": "5.0.0",
+          "System.ComponentModel.Annotations": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Identity.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Identity.Core.dll": {}
+        }
+      },
+      "Microsoft.Extensions.Identity.Stores/5.0.4": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Identity.Core": "5.0.4",
+          "Microsoft.Extensions.Logging": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Extensions.Identity.Stores.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Identity.Stores.dll": {}
+        }
+      },
       "Microsoft.Extensions.Logging/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -483,7 +589,7 @@
           "lib/netstandard2.0/Microsoft.IdentityModel.Tokens.dll": {}
         }
       },
-      "Microsoft.JSInterop/3.1.0": {
+      "Microsoft.JSInterop/3.1.13": {
         "type": "package",
         "compile": {
           "lib/netcoreapp3.1/Microsoft.JSInterop.dll": {}
@@ -588,13 +694,25 @@
           "lib/netstandard2.1/Mono.WebAssembly.Interop.dll": {}
         }
       },
-      "Newtonsoft.Json/12.0.2": {
+      "Newtonsoft.Json/13.0.1": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "Newtonsoft.Json.Bson/1.0.2": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.Bson.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.Bson.dll": {}
         }
       },
       "Npgsql/5.0.4": {
@@ -1738,6 +1856,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Blazor": "3.1.0-preview4.19579.2",
           "Microsoft.AspNetCore.Blazor.HttpClient": "3.1.0-preview4.19579.2",
+          "Microsoft.AspNetCore.Components.Authorization": "3.1.13",
           "MidwestMusicDB.Shared": "1.0.0"
         },
         "compile": {
@@ -1750,6 +1869,9 @@
       "MidwestMusicDB.Shared/1.0.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "5.0.0"
+        },
         "compile": {
           "bin/placeholder/MidwestMusicDB.Shared.dll": {}
         },
@@ -1776,19 +1898,20 @@
         "logo.png"
       ]
     },
-    "Microsoft.AspNetCore.Authorization/3.1.0": {
-      "sha512": "R/0qFIu1m7jJFD0OuLIjLXC0uYQxFwwW7ylVvGgUPUpOJJK0bKJjfrDu20kY1Yw0hy9ejZYZEdUZHRm3ei0+3w==",
+    "Microsoft.AspNetCore.Authorization/3.1.13": {
+      "sha512": "YwUQdgpq+o91hx3vzGZjPQrY6hTPB9mTLSAuGvLDZ0sRSQpDjiHPDPxZieoaiWplHlk3pM2NFJKNFDEDrYsKZA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.authorization/3.1.0",
+      "path": "microsoft.aspnetcore.authorization/3.1.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
         "lib/netcoreapp3.1/Microsoft.AspNetCore.Authorization.dll",
         "lib/netcoreapp3.1/Microsoft.AspNetCore.Authorization.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.xml",
-        "microsoft.aspnetcore.authorization.3.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.authorization.3.1.13.nupkg.sha512",
         "microsoft.aspnetcore.authorization.nuspec"
       ]
     },
@@ -1834,10 +1957,10 @@
         "microsoft.aspnetcore.blazor.server.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Components/3.1.0": {
-      "sha512": "YIcE9FGLLMt8vnjaQEf6PhI4ikxibEv6t06SQTb9BAd//UxrOklqDhCzWldF6zXxh3+VnyVGFNOOlz9Tg8vQ8A==",
+    "Microsoft.AspNetCore.Components/3.1.13": {
+      "sha512": "gz3YfjOU1gzqYtBHeyCqnsvMlfhCDl2W+FHzUxZeG0urCETSpWCuPxMO+64gibOUm8BLMx7laWG+4OTT6XnJ7Q==",
       "type": "package",
-      "path": "microsoft.aspnetcore.components/3.1.0",
+      "path": "microsoft.aspnetcore.components/3.1.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1847,23 +1970,41 @@
         "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.Components.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Components.xml",
-        "microsoft.aspnetcore.components.3.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.components.3.1.13.nupkg.sha512",
         "microsoft.aspnetcore.components.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Components.Analyzers/3.1.0": {
-      "sha512": "DWvG559bbeNMkesZ/sYZqEH9iTx4N7WbdyChf2PS7ouZBcWjRSt/V+sKuofrTpb0c8STe14+U3kMKO5FtwaT/g==",
+    "Microsoft.AspNetCore.Components.Analyzers/3.1.13": {
+      "sha512": "mPU1TQCheviUPMwpzHEDL1JkgxDulxCtOCDiQkSSyYp6L2ZufLj1R5k1waHsyhA47zcJU0sJD8XT05wMyLS8UA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.components.analyzers/3.1.0",
+      "path": "microsoft.aspnetcore.components.analyzers/3.1.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "THIRD-PARTY-NOTICES.txt",
         "analyzers/dotnet/cs/Microsoft.AspNetCore.Components.Analyzers.dll",
-        "build/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.props",
-        "microsoft.aspnetcore.components.analyzers.3.1.0.nupkg.sha512",
+        "build/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets",
+        "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets",
+        "microsoft.aspnetcore.components.analyzers.3.1.13.nupkg.sha512",
         "microsoft.aspnetcore.components.analyzers.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Components.Authorization/3.1.13": {
+      "sha512": "xO61CT/iEahtalcQBuZq2PspJJLVqHRXtJsofMcoHC/Rg3etsAXDFPndLG/r+zeOuDgCKMor4iz2dww/XK5NuA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.components.authorization/3.1.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.txt",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Authorization.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Components.Authorization.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Components.Authorization.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Components.Authorization.xml",
+        "microsoft.aspnetcore.components.authorization.3.1.13.nupkg.sha512",
+        "microsoft.aspnetcore.components.authorization.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Components.Forms/3.1.0": {
@@ -1900,18 +2041,108 @@
         "microsoft.aspnetcore.components.web.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Metadata/3.1.0": {
-      "sha512": "ZiNCjglz4kR2OGElM2u/S6cS1ArAxE6lP4BeniCZcr6l+ACzslKgcPGOTY8/Glppx6CDzMKfmyqV+VbFh5CyjQ==",
+    "Microsoft.AspNetCore.Cryptography.Internal/5.0.4": {
+      "sha512": "KZwzffCGaE+V6n/kBPdFEA1M5pDgH9Y6GbOSjzSyH8h6JC+hAkpAnqFtToGNHyBK9QGExA1Ie1BvEL9lycdJ5w==",
       "type": "package",
-      "path": "microsoft.aspnetcore.metadata/3.1.0",
+      "path": "microsoft.aspnetcore.cryptography.internal/5.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/net461/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "lib/net5.0/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "microsoft.aspnetcore.cryptography.internal.5.0.4.nupkg.sha512",
+        "microsoft.aspnetcore.cryptography.internal.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Cryptography.KeyDerivation/5.0.4": {
+      "sha512": "0gY+YzLConLQs0sTqZSlQI2QPfws7ZsSTjNHB9rhVuK6VkB9fTWXaEj9ostSRHGUgqs0pdXOj6oEU3lFZgY0NA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.cryptography.keyderivation/5.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+        "lib/net461/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
+        "lib/net5.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
+        "microsoft.aspnetcore.cryptography.keyderivation.5.0.4.nupkg.sha512",
+        "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore/5.0.4": {
+      "sha512": "O3/inpajeeFN8uUF9L93i75UtIZDuY3opfTZidXt8L3EglUW8lxqgzSw2TseAIey4v/NIsLUUrvh98OQoc5GMQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.identity.entityframeworkcore/5.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net5.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml",
+        "lib/netstandard2.1/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll",
+        "lib/netstandard2.1/Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml",
+        "microsoft.aspnetcore.identity.entityframeworkcore.5.0.4.nupkg.sha512",
+        "microsoft.aspnetcore.identity.entityframeworkcore.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.JsonPatch/5.0.4": {
+      "sha512": "Nd/QZhdEX9tvuoz7BmeL6PWmimkpTjZ3MsUtmhP9xEjfGezthI4g3K/ggW/HO53Ow0LnjBx9hZKAcENVPzF2LA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.jsonpatch/5.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.AspNetCore.JsonPatch.dll",
+        "lib/net461/Microsoft.AspNetCore.JsonPatch.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.xml",
+        "microsoft.aspnetcore.jsonpatch.5.0.4.nupkg.sha512",
+        "microsoft.aspnetcore.jsonpatch.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Metadata/3.1.13": {
+      "sha512": "Fvgyo2ZAeNHMccnzk49vNC6Zoby8YLSgGs5VUF06F93OrP1SSU716bQUVD9pnfRuwIwq/lqywC2N4f82PCXPxQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.metadata/3.1.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Metadata.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Metadata.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.xml",
-        "microsoft.aspnetcore.metadata.3.1.0.nupkg.sha512",
+        "microsoft.aspnetcore.metadata.3.1.13.nupkg.sha512",
         "microsoft.aspnetcore.metadata.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Mvc.NewtonsoftJson/3.1.13": {
+      "sha512": "8I/ewSkdLx10d6/1GJvnKSarpSq33VpMIv/UUjoSR4QRa+GhHHMayTO1Kkf53pVc+e6XlyfQcRIwC5M7WX2gBw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.mvc.newtonsoftjson/3.1.13",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll",
+        "lib/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.xml",
+        "microsoft.aspnetcore.mvc.newtonsoftjson.3.1.13.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.newtonsoftjson.nuspec"
       ]
     },
     "Microsoft.CSharp/4.7.0": {
@@ -2277,6 +2508,44 @@
         "version.txt"
       ]
     },
+    "Microsoft.Extensions.Identity.Core/5.0.4": {
+      "sha512": "ibRI/IPV536SIUEvasIICtrf/df+ukBmBHFY1N9cT3igsAFP/Ru3eBBWwMlTjJKkkQf5W0PCncMIBK16DnehCg==",
+      "type": "package",
+      "path": "microsoft.extensions.identity.core/5.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Identity.Core.dll",
+        "lib/net461/Microsoft.Extensions.Identity.Core.xml",
+        "lib/net5.0/Microsoft.Extensions.Identity.Core.dll",
+        "lib/net5.0/Microsoft.Extensions.Identity.Core.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Identity.Core.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Identity.Core.xml",
+        "microsoft.extensions.identity.core.5.0.4.nupkg.sha512",
+        "microsoft.extensions.identity.core.nuspec"
+      ]
+    },
+    "Microsoft.Extensions.Identity.Stores/5.0.4": {
+      "sha512": "hrJNgTY7BMCHWts10AzUfZryKwJE8QGZ1ZbVgCcgZVnqVrWlTLDJnPg2DmHVyw3em+twg5ZT4G+OlHT9ovfa0g==",
+      "type": "package",
+      "path": "microsoft.extensions.identity.stores/5.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/Microsoft.Extensions.Identity.Stores.dll",
+        "lib/net461/Microsoft.Extensions.Identity.Stores.xml",
+        "lib/net5.0/Microsoft.Extensions.Identity.Stores.dll",
+        "lib/net5.0/Microsoft.Extensions.Identity.Stores.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Identity.Stores.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Identity.Stores.xml",
+        "microsoft.extensions.identity.stores.5.0.4.nupkg.sha512",
+        "microsoft.extensions.identity.stores.nuspec"
+      ]
+    },
     "Microsoft.Extensions.Logging/5.0.0": {
       "sha512": "MgOwK6tPzB6YNH21wssJcw/2MKwee8b2gI7SllYfn6rvTpIrVvVS5HAjSU2vqSku1fwqRvWP0MdIi14qjd93Aw==",
       "type": "package",
@@ -2508,20 +2777,20 @@
         "microsoft.identitymodel.tokens.nuspec"
       ]
     },
-    "Microsoft.JSInterop/3.1.0": {
-      "sha512": "A6w985fb6RyL4x69TILW3sF2DcAufUPDOwN1LpdRZ3sZcpvb2ZnM2TrarleDhtqfS5g0Ot+2AG5AM9svH9Cm8Q==",
+    "Microsoft.JSInterop/3.1.13": {
+      "sha512": "/BhHm6lEApLncXQuwOYRnQsgz1es8mCOUzUhDzNxAN247n+YmeOpc8gxopPokljgoAs/I4NrFSiKhpwCSzx4qg==",
       "type": "package",
-      "path": "microsoft.jsinterop/3.1.0",
+      "path": "microsoft.jsinterop/3.1.13",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "lib/netcoreapp3.1/Microsoft.JSInterop.dll",
         "lib/netcoreapp3.1/Microsoft.JSInterop.xml",
         "lib/netstandard2.0/Microsoft.JSInterop.dll",
         "lib/netstandard2.0/Microsoft.JSInterop.xml",
-        "microsoft.jsinterop.3.1.0.nupkg.sha512",
-        "microsoft.jsinterop.nuspec",
-        "packageIcon.png"
+        "microsoft.jsinterop.3.1.13.nupkg.sha512",
+        "microsoft.jsinterop.nuspec"
       ]
     },
     "Microsoft.NETCore.Platforms/3.1.0": {
@@ -2670,10 +2939,10 @@
         "mono.webassembly.interop.nuspec"
       ]
     },
-    "Newtonsoft.Json/12.0.2": {
-      "sha512": "rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
       "type": "package",
-      "path": "newtonsoft.json/12.0.2",
+      "path": "newtonsoft.json/13.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2692,12 +2961,30 @@
         "lib/netstandard1.3/Newtonsoft.Json.xml",
         "lib/netstandard2.0/Newtonsoft.Json.dll",
         "lib/netstandard2.0/Newtonsoft.Json.xml",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
-        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
-        "newtonsoft.json.12.0.2.nupkg.sha512",
-        "newtonsoft.json.nuspec"
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
+    "Newtonsoft.Json.Bson/1.0.2": {
+      "sha512": "QYFyxhaABwmq3p/21VrZNYvCg3DaEoN/wUuw5nmfAf0X3HLjgupwhkEWdgfb9nvGAUIv3osmZoD3kKl4jxEmYQ==",
+      "type": "package",
+      "path": "newtonsoft.json.bson/1.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net45/Newtonsoft.Json.Bson.dll",
+        "lib/net45/Newtonsoft.Json.Bson.pdb",
+        "lib/net45/Newtonsoft.Json.Bson.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.Bson.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.Bson.pdb",
+        "lib/netstandard1.3/Newtonsoft.Json.Bson.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.Bson.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.Bson.pdb",
+        "lib/netstandard2.0/Newtonsoft.Json.Bson.xml",
+        "newtonsoft.json.bson.1.0.2.nupkg.sha512",
+        "newtonsoft.json.bson.nuspec"
       ]
     },
     "Npgsql/5.0.4": {
@@ -6215,12 +6502,17 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Microsoft.AspNetCore.Blazor.Server >= 3.1.0-preview4.19579.2",
+      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.4",
+      "Microsoft.AspNetCore.JsonPatch >= 5.0.4",
+      "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 3.1.13",
       "Microsoft.EntityFrameworkCore >= 5.0.4",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.4",
       "MidwestMusicDB.Client >= 1.0.0",
       "MidwestMusicDB.Shared >= 1.0.0",
+      "Newtonsoft.Json.Bson >= 1.0.2",
+      "Newtonsoft.json >= 13.0.1",
       "Npgsql >= 5.0.4",
       "Npgsql.EntityFrameworkCore.PostgreSQL >= 5.0.2"
     ]
@@ -6271,6 +6563,18 @@
             "target": "Package",
             "version": "[3.1.0-preview4.19579.2, )"
           },
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[5.0.4, )"
+          },
+          "Microsoft.AspNetCore.JsonPatch": {
+            "target": "Package",
+            "version": "[5.0.4, )"
+          },
+          "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "target": "Package",
+            "version": "[3.1.13, )"
+          },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.4, )"
@@ -6290,6 +6594,14 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[5.0.4, )"
+          },
+          "Newtonsoft.Json.Bson": {
+            "target": "Package",
+            "version": "[1.0.2, )"
+          },
+          "Newtonsoft.json": {
+            "target": "Package",
+            "version": "[13.0.1, )"
           },
           "Npgsql": {
             "target": "Package",

@@ -91,3 +91,11 @@
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/MidwestMusicDB.Client.pdb
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/blazor/linker.descriptor.xml
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/blazor/blazor.boot.json
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/User/Form.razor.g.cs
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/User/Form.razor.g.cs
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/User/Create.razor.g.cs
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/User/Create.razor.g.cs
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/User/Update.razor.g.cs
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/User/Update.razor.g.cs
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/bin/Debug/netstandard2.1/dist/_framework/_bin/Microsoft.AspNetCore.Components.Authorization.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/bin/Debug/netstandard2.1/Microsoft.AspNetCore.Components.Authorization.dll

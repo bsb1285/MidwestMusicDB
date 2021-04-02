@@ -58,5 +58,20 @@ namespace MidwestMusicDB.Server.Controllers
             await _context.SaveChangesAsync();
             return NoContent();
         }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> Post(LoginRequest loginRequest)
+        {
+            var u = await _context.Users.FirstOrDefaultAsync(a => 
+                a.username == loginRequest.username && a.password == loginRequest.password);
+            if (u != null)
+            {
+                Console.WriteLine("Good user input");
+                return Ok();
+            }
+            Console.WriteLine("Bad user input");
+            return BadRequest("Username or password is incorrect");
+        }
     }
 }

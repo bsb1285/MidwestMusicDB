@@ -1,5 +1,4 @@
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/MidwestMusicDB.Client.blazor.config
-/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/appsettings.json
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/MidwestMusicDB.Server
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/MidwestMusicDB.Server.deps.json
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/MidwestMusicDB.Server.runtimeconfig.json
@@ -77,3 +76,17 @@
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/obj/Debug/netcoreapp3.1/MidwestMusicDB.Server.pdb
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Npgsql.dll
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/appsettings.json
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authorization.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Components.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Components.Authorization.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.Internal.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.JsonPatch.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Metadata.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Identity.Core.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Identity.Stores.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Microsoft.JSInterop.dll
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Server/bin/Debug/netcoreapp3.1/Newtonsoft.Json.Bson.dll

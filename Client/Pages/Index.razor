@@ -1,7 +1,37 @@
 ﻿@page "/"
+@inject NavigationManager navigationManager
+@inject HttpClient httpClient
 
-<h1>Hello, world!</h1>
+<h1>Login</h1>
 
-Welcome to your new app.
+<h1 class="h2 font-weight-normal login-title">
+    Login
+</h1>
+<EditForm class="form-signin" OnValidSubmit="OnSubmit" Model="loginRequest">
+    <DataAnnotationsValidator />
+    <label for="inputUsername" class="sr-only">User Name</label>
+    <InputText id="inputUsername" class="form-control" @bind-Value="loginRequest.username" autofocus placeholder="Username" />
+    <ValidationMessage For="@(() => loginRequest.username)" />
+    <label for="inputPassword" class="sr-only">Password</label>
+    <InputText type="password" id="inputPassword" class="form-control" placeholder="Password" @bind-Value="loginRequest.password" />
+    <ValidationMessage For="@(() => loginRequest.password)" />
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    
+    <NavLink href="user/register">
+        <h6 class="font-weight-normal text-center">Create account</h6>
+    </NavLink>
+</EditForm>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code
+{
+    LoginRequest loginRequest { get; set; } = new LoginRequest();
+    
+    async Task OnSubmit()
+    {
+        
+        await httpClient.PostJsonAsync("api/user/login", loginRequest);
+        navigationManager.NavigateTo("/user");
+    }
+
+    
+}
