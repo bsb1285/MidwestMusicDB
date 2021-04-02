@@ -58,7 +58,7 @@ namespace MidwestMusicDB.Server.Data
         public DbSet<ArtistsAlbum> ArtistsAlbum { get; set; }
         public DbSet<ArtistsSong> ArtistsSong { get; set; }
         public DbSet<Genre> Genre { get; set; }
-        public DbSet<Playlist> Playlists { get; set; }
+        public DbSet<Playlist> Playlist { get; set; }
         public DbSet<Song> Song { get; set; }
         public DbSet<SongOnAlbum> SongOnAlbum { get; set; }
         public DbSet<SongOnPlaylist> SongOnPlaylist { get; set; }

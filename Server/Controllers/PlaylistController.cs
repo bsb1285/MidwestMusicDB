@@ -22,23 +22,17 @@ namespace MidwestMusicDB.Server.Controllers
         public async Task<IActionResult> Get(string username)
         {
             var usersPlaylists = await _context.UsersPlaylist.ToListAsync();
-            var ids = usersPlaylists.FindAll(playlist => playlist.username == username);
+            var ids = usersPlaylists.Where(playlist => playlist.username == username).Select(p => p.id);
 
-            var playlists = await _context.Playlists.ToListAsync();
-            var playlistsForUsers = playlists.Find(p =>
-            {
-                var up = new UsersPlaylist();
-                up.id = p.id;
-                up.username = username;
-                return ids.Contains(up);
-            });
+            var playlists = await _context.Playlist.ToListAsync();
+            var playlistsForUsers = playlists.Where(p => ids.Contains(p.id));
             return Ok(playlistsForUsers);
         }
         [HttpGet("{username}/{id}")]
         public async Task<IActionResult> Get(string username, int id)
         {
             var userPlaylists =  _context.UsersPlaylist.Where(up => up.username == username).Select(up => up.id);
-            var playlists = _context.Playlists.Where(p => userPlaylists.Contains(p.id));
+            var playlists = _context.Playlist.Where(p => userPlaylists.Contains(p.id));
             return BadRequest();
         }
 
