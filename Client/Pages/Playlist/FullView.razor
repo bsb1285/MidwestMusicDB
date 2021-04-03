@@ -1,0 +1,75 @@
+@page "/playlists/{username}/{ids}"
+@inject NavigationManager uriHeler
+@inject HttpClient client
+
+@if (p != null)
+{
+    <h3>@p.title</h3>
+    <Form ButtonText="Change Name" playlist="@p" OnValidSubmit="@Update"></Form>
+}
+@if (songsOnPlaylist == null)
+{
+    <text>Loading ...</text>
+}
+else if (songsOnPlaylist.Length == 0)
+{
+    
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Duration</th>
+            <th>Release Date</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var s in songsOnPlaylist)
+        {
+            <tr>
+                <td>@s.title</td>
+                <td>@s.length</td>
+                <td>@s.song_release_date</td>
+                <td>
+                    <button class="btn btn-success" @onclick="@(() => Listen(s.title))">Listen</button>
+                    <button class="btn btn-danger" @onclick="@(() => Delete(s.title))">Delete</button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+@code {
+    [Parameter] public string username { get; set; }
+    [Parameter] public string ids { get; set; }
+    public int id { get; set; }
+    Playlist p { get; set; }
+    Song[] songsOnPlaylist { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        id = int.Parse(ids);
+        p = await client.GetJsonAsync<Playlist>($"/api/playlist/{id}/{false}");
+        songsOnPlaylist = await client.GetJsonAsync<Song[]>($"/api/playlist/{id}/{true}");
+
+    }
+
+    async Task Update()
+    {
+        await client.PutJsonAsync($"/api/playlist/update/{p.title}/{p.id}",p);
+    }
+    async Task Delete(string title)
+    {
+        await client.DeleteAsync($"api/playlist/remove/{id}/{title}");
+        await OnInitializedAsync();
+    }
+
+    async Task Listen(string title)
+    {
+        await client.PutJsonAsync($"api/song/listen/{username}/{title}", title);
+    }
+
+}

@@ -1,4 +1,5 @@
 @page "/playlists/{username}"
+@inject HttpClient client
 <h3>FetchData</h3>
 
 @if (playlists == null)
@@ -7,41 +8,41 @@
 }
 else if (playlists.Length == 0)
 {
-    <text>No Records Found.</text>
+    <button class="btn" href="/playlists/@username/create">Create new</button>
 }
 else
 {
-   /* <table class="table table-striped">
+    <table class="table table-striped">
         <thead>
-            <tr>
-                <th>Username</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th></th>
-            </tr>
+        <tr>
+            <th>Name</th>
+            <th>Durantion</th>
+            <th>Creation Date</th>
+            <th>Song Count</th>
+            <th></th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (User u in users)
-            {
-                <tr>
-                    <td>@u.username</td>
-                    <td>@u.first_name</td>
-                    <td>@u.last_name</td>
-                    <td>@u.email</td>
-                    <td>@u.last_access_date</td>
-                    <td>
-                        <a class="btn btn-success" href="user/edit/@u.username">Edit</a>
-                        <button class="btn btn-danger" @onclick="@(() => Delete(u.username))">Delete</button>
-                    </td>
-                </tr>
-            }
+        @foreach (Playlist p in playlists)
+        {
+            <tr>
+                <td>@p.title</td>
+                <td>@p.total_duration</td>
+                <td>@p.creation_date</td>
+                <td>@p.song_count</td>
+                <a class="btn btn-info" href="/playlists/@username/@p.id/">View</a>
+            </tr>
+        }
         </tbody>
     </table>
-    */
 }
 
 @code {
     [Parameter] public string username { get; set; }
     Playlist[] playlists { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        playlists = await client.GetJsonAsync<Playlist[]>($"api/playlist/{username}");
+    }
+    
 }

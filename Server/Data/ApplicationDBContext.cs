@@ -46,7 +46,9 @@ namespace MidwestMusicDB.Server.Data
                     .HasAlternateKey(up => up.id);
             modelBuilder.Entity<SongGenre>().HasKey(sg => sg.name);
             modelBuilder.Entity<SongGenre>().HasAlternateKey(sg => sg.title);
-            
+            modelBuilder.Entity<UserSong>().HasKey(sg => sg.username);
+            modelBuilder.Entity<UserSong>().HasAlternateKey(sg => sg.title);
+
             
             
             
@@ -64,6 +66,7 @@ namespace MidwestMusicDB.Server.Data
         public DbSet<SongOnPlaylist> SongOnPlaylist { get; set; }
         public DbSet<UsersPlaylist> UsersPlaylist { get; set; }
         public DbSet<SongGenre> SongGenre { get; set; }
+        public DbSet<UserSong> UserSong { get; set; }
 
     }
 }

@@ -65,6 +65,13 @@ using MidwestMusicDB.Shared.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 9 "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/_Imports.razor"
+using MidwestMusicDB.Client.Pages.Shared;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/user")]
     public partial class FetchData : Microsoft.AspNetCore.Components.ComponentBase
     {

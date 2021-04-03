@@ -1,0 +1,21 @@
+<EditForm Model="@playlist" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator/>
+    <div class="form-group">
+        <label>Search:</label>
+        <div>
+            <InputText @bind-Value="@playlist.title"/>
+            <ValidationMessage For="@(() => playlist.title)"/>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">
+        @ButtonText
+    </button>
+</EditForm>
+
+@code {
+    [Parameter]public Playlist playlist { get; set; }
+
+    [Parameter]
+    public string ButtonText { get; set; } = "Search";
+    [Parameter] public EventCallback OnValidSubmit { get; set; }
+}

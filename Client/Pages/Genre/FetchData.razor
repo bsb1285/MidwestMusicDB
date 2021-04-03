@@ -1,4 +1,4 @@
-@page "/song/{username}"
+@page "/Genre/{username}"
 @using System.ComponentModel
 
 
@@ -6,7 +6,7 @@
 @inject IJSRuntime js
 @inject NavigationManager uriHelper
 
-<h3>Song List</h3>
+<h3>Songs of Genre type List</h3>
 
 <SearchForm ButtonText="Search" searchModel="@_searchModel" OnValidSubmit="@Search"></SearchForm>
 <div>
@@ -65,21 +65,20 @@ else
     Song[] songs { get; set; }
     protected override async Task OnInitializedAsync()
     {
-        //songs = await client.GetJsonAsync<Song[]>("api/search");
+    //songs = await client.GetJsonAsync<Song[]>("api/search");
     }
 
     async Task Search()
     {
-        var search_type = "song";
+        var search_type = "genre";
         Console.WriteLine($"SearchString: {_searchModel.SearchString}");
         songs = await client.GetJsonAsync<Song[]>($"api/search/{_searchModel.SearchString}/{search_type}");
         Console.WriteLine("Done Search");
-        uriHelper.NavigateTo($"song/{username}");
+        uriHelper.NavigateTo($"Genre/{username}");
     }
-    
+
     async Task Listen(string title)
     {
         await client.PutJsonAsync($"api/song/listen/{username}/{title}", title);
     }
-
 }

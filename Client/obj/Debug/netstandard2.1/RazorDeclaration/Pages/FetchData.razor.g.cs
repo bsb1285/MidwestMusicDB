@@ -70,6 +70,13 @@ using MidwestMusicDB.Shared.Models;
 #line hidden
 #nullable disable
 #nullable restore
+#line 9 "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/_Imports.razor"
+using MidwestMusicDB.Client.Pages.Shared;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/Pages/FetchData.razor"
 using MidwestMusicDB.Shared;
 

@@ -1,0 +1,18 @@
+@page "/playlists/{username}/create"
+@inject HttpClient client
+@inject NavigationManager uriHelper
+
+<h3>Create</h3>
+<EditForm ButtonText="Create" playlist="@playlist" OnValidSubmit="@CreatePlaylist"/>
+@code {
+    Playlist playlist = new Playlist();
+
+    async Task CreatePlaylist()
+    {
+        playlist.creation_date = DateTime.Today;
+        playlist.song_count = 0;
+        playlist.total_duration = 0;
+        
+        await client.PostJsonAsync("/api/playlist/{username}", playlist);
+    }
+}

@@ -1,0 +1,59 @@
+@page "/playlists/{username}/{title}/add"
+@inject HttpClient client
+@inject NavigationManager uriHelper
+
+<h3>AddToPlaylist</h3>
+
+@if (playlists == null)
+{
+    <text>Loading ...</text>
+}
+else if (playlists.Length == 0)
+{
+    <text>Create new</text>
+}
+else
+{
+   <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Durantion</th>
+                <th>Creation Date</th>
+                <th>Song Count</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Playlist p in playlists)
+            {
+                <tr>
+                    <td>@p.title</td>
+                    <td>@p.total_duration</td>
+                    <td>@p.creation_date</td>
+                    <td>@p.song_count</td>
+                    <td>
+                        <button class="btn btn-danger" @onclick="@(() => AddSongToPlaylist(p))">Add to Collection</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    [Parameter] public string username { get; set; }
+    [Parameter] public string title { get; set; }
+    Playlist[] playlists { get; set; }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        playlists = await client.GetJsonAsync<Playlist[]>($"api/playlist/{username}");
+    }
+
+    async  Task AddSongToPlaylist(Playlist p)
+    {
+        await client.PutJsonAsync($"api/playlist/{username}/{p.id}/{title}", p);
+        uriHelper.NavigateTo($"/song/{username}");
+    }
+}
