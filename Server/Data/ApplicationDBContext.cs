@@ -48,10 +48,11 @@ namespace MidwestMusicDB.Server.Data
             modelBuilder.Entity<SongGenre>().HasAlternateKey(sg => sg.title);
             modelBuilder.Entity<UserSong>().HasKey(sg => sg.username);
             modelBuilder.Entity<UserSong>().HasAlternateKey(sg => sg.title);
+            modelBuilder.Entity<UserFollower>().HasKey(u => u.following);
+            modelBuilder.Entity<UserFollower>().HasAlternateKey(u => u.follower);
 
-            
-            
-            
+
+
 
         }
         public DbSet<User> Users { get; set; }
@@ -67,6 +68,7 @@ namespace MidwestMusicDB.Server.Data
         public DbSet<UsersPlaylist> UsersPlaylist { get; set; }
         public DbSet<SongGenre> SongGenre { get; set; }
         public DbSet<UserSong> UserSong { get; set; }
+        public DbSet<UserFollower> UserFollower { get; set; }
 
     }
 }

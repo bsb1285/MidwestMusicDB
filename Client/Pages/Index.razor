@@ -30,8 +30,9 @@
     {
         
         await httpClient.PostJsonAsync("api/user/login", loginRequest);
-        navigationManager.NavigateTo($"/song/{loginRequest.username}");
+        navigationManager.NavigateTo($"/user/{loginRequest.username}");
     }
 
     
 }
+ 

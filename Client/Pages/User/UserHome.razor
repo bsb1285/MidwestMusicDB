@@ -1,14 +1,37 @@
 @page "/user/{username}"
 @inject HttpClient client
 @inject IJSRuntime js
+@using MidwestMusicDB.Client.Pages.Playlist
 
 <h3>UserHome</h3>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Followers</th>
+        <th>Following</th>
+    </tr>
+    <td>@followers</td>
+    <td>@following</td>
+    </thead>
+</table>
+<h1> Playlists</h1>
+<PlaylistTable Playlists="@_playlists" Username="@username"></PlaylistTable>
+
 
 @code {
+    
+    [Parameter]
+    public string username { get; set; }
+
+    int followers { get; set; }
+    int following { get; set; }
     Playlist[] _playlists { get; set; }
     protected override async Task OnInitializedAsync()
     {
-    //users = await client.GetFromJsonAsync<User[]>("api/user");
-        //_playlists = await client.GetJsonAsync<User[]>("api/playlists");
+        var followData = await client.GetJsonAsync<int[]>($"api/user/{username}/{true}");
+        followers = followData[1];
+        following = followData[0];
+
+        _playlists = await client.GetJsonAsync<Playlist[]>($"api/playlist/{username}");
     }
 }

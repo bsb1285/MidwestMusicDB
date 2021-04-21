@@ -74,7 +74,7 @@ else
         Console.WriteLine($"SearchString: {_searchModel.SearchString}");
         songs = await client.GetJsonAsync<Song[]>($"api/search/{_searchModel.SearchString}/{search_type}");
         Console.WriteLine("Done Search");
-        uriHelper.NavigateTo($"Album/{username}");
+        uriHelper.NavigateTo($"AlbumJust/{username}");
     }
     
     async Task Listen(string title)

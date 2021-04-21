@@ -27,11 +27,19 @@ namespace MidwestMusicDB.Server.Controllers
             return Ok(users);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string username)
+        [HttpGet("{id}/{data}")]
+        public async Task<IActionResult> Get(string username, bool data)
         {
-            var users = await _context.Users.FirstOrDefaultAsync(a=>a.username == username);
-            return Ok(users);
+            if (data)
+            {
+                var users = await _context.Users.FirstOrDefaultAsync(a=>a.username == username);
+                return Ok(users);    
+            }
+
+            var followCount =  _context.UserFollower.Count(uf => uf.follower == username);
+            var followerCount = _context.UserFollower.Count(uf => uf.following == username);
+            return Ok(new int[] {followCount, followerCount});
+
         }
 
         [HttpPost]
@@ -75,5 +83,6 @@ namespace MidwestMusicDB.Server.Controllers
             Console.WriteLine("Bad user input");
             return BadRequest("Username or password is incorrect");
         }
+        
     }
 }
