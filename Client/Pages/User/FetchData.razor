@@ -1,4 +1,4 @@
-@page "/user"
+@page "/user/{username}"
 @inject HttpClient client
 @inject IJSRuntime js
 
@@ -39,8 +39,8 @@ else
                     <td>@u.email</td>
                     <td>@u.last_access_date</td>
                     <td>
-                        <a class="btn btn-success" href="user/edit/@u.username">Edit</a>
-                        <button class="btn btn-danger" @onclick="@(() => Delete(u.username))">Delete</button>
+                        
+                        <button class="btn btn-danger" @onclick="@(() => Follow(u.username))">Follow</button>
                     </td>
                 </tr>
             }
@@ -48,19 +48,28 @@ else
     </table>
 }
 @code {
+    [Parameter] public string username { get; set; }
+    SearchModel _searchModel = new SearchModel();
     User[] users { get; set; }
     protected override async Task OnInitializedAsync()
     {
         //users = await client.GetFromJsonAsync<User[]>("api/user");
         users = await client.GetJsonAsync<User[]>("api/user");
     }
-    async Task Delete(string username)
+
+    async Task Search()
     {
-        var user = users.First(x => x.username == username);
-        if (await js.InvokeAsync<bool>("confirm", $"Do you want to delete {user.first_name}'s ({user.username}) Record?"))
-        {
-            await client.DeleteAsync($"api/user/{username}");
-            await OnInitializedAsync();
-        }
+        var search_type = "user";
+        users = await client.GetJsonAsync<User[]>($"api/search/{_searchModel.SearchString}/{search_type}");
+    }
+    async Task Follow(string username)
+    {
+        
+        // var user = users.First(x => x.username == username);
+        // if (await js.InvokeAsync<bool>("confirm", $"Do you want to delete {user.first_name}'s ({user.username}) Record?"))
+        // {
+        //     await client.DeleteAsync($"api/user/{username}");
+        //     await OnInitializedAsync();
+        // }
     }
 }

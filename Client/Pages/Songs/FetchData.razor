@@ -4,7 +4,7 @@
 @inject HttpClient client
 @inject IJSRuntime js
 @inject NavigationManager uriHelper
-
+<a href="/@username">Home</a>
 <h3>Song List</h3>
 
 <SearchForm ButtonText="Search" searchModel="@_searchModel" OnValidSubmit="@Search"></SearchForm>
@@ -22,9 +22,6 @@ else if (songs.Length == 0)
 }
 else
 {
-    
-    
-    
     <table class="table table-striped">
         <thead>
         <tr>
@@ -42,7 +39,7 @@ else
                 <td>@s.length</td>
                 <td>@s.song_release_date</td>
                 <td>
-                    <a class="btn btn-success" href="playlists/@username/@s.title/add">Add To playlist</a>
+                    <a class="btn btn-success" href="playlists/@username/@s.title">Add To playlist</a>
                     <button class="btn btn-success" @onclick="@(() => Listen(s.title))">Listen</button>
                 </td>
             </tr>
@@ -64,7 +61,7 @@ else
     Song[] songs { get; set; }
     protected override async Task OnInitializedAsync()
     {
-        //songs = await client.GetJsonAsync<Song[]>("api/search");
+        songs = await client.GetJsonAsync<Song[]>("api/search");
     }
 
     async Task Search()

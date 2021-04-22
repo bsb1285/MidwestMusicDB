@@ -1,4 +1,4 @@
-@page "/user/{username}"
+@page "/{username}"
 @inject HttpClient client
 @inject IJSRuntime js
 @using MidwestMusicDB.Client.Pages.Playlist
@@ -11,12 +11,13 @@
         <th>Following</th>
     </tr>
     <td>@followers</td>
-    <td>@following</td>
+    <td><a href="/@username/following">@following</a></td>
     </thead>
 </table>
 <h1> Playlists</h1>
 <PlaylistTable Playlists="@_playlists" Username="@username"></PlaylistTable>
-
+<h1>Top Metrics</h1>
+<h3>Top Artits</h3>
 
 @code {
     
@@ -28,7 +29,7 @@
     Playlist[] _playlists { get; set; }
     protected override async Task OnInitializedAsync()
     {
-        var followData = await client.GetJsonAsync<int[]>($"api/user/{username}/{true}");
+        var followData = await client.GetJsonAsync<int[]>($"api/user/{username}/{2}");
         followers = followData[1];
         following = followData[0];
 

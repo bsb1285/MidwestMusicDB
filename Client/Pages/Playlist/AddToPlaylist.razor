@@ -53,7 +53,7 @@ else
 
     async  Task AddSongToPlaylist(Playlist p)
     {
-        await client.PutJsonAsync($"api/playlist/{username}/{p.id}/{title}", p);
+        await client.PutJsonAsync($"api/playlist/{p.id}/{title}", p);
         uriHelper.NavigateTo($"/song/{username}");
     }
 }

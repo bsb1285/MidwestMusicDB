@@ -15,6 +15,7 @@ namespace MidwestMusicDB.Server.Controllers
     public class UserController : ControllerBase
     {
         private readonly ApplicationDBContext _context;
+
         public UserController(ApplicationDBContext context)
         {
             this._context = context;
@@ -28,17 +29,27 @@ namespace MidwestMusicDB.Server.Controllers
         }
 
         [HttpGet("{id}/{data}")]
-        public async Task<IActionResult> Get(string username, bool data)
+        public async Task<IActionResult> Get(string username, int data)
         {
-            if (data)
+            if (data == 0)
             {
-                var users = await _context.Users.FirstOrDefaultAsync(a=>a.username == username);
-                return Ok(users);    
+                var users = await _context.Users.FirstOrDefaultAsync(a => a.username == username);
+                return Ok(users);
             }
+            else if (data == 1)
+            {
+                var followCount = _context.UsersFollower.Count(uf => uf.follower == username);
+                var followerCount = _context.UsersFollower.Count(uf => uf.following == username);
+                return Ok(new int[] {followCount, followerCount});
 
-            var followCount =  _context.UserFollower.Count(uf => uf.follower == username);
-            var followerCount = _context.UserFollower.Count(uf => uf.following == username);
-            return Ok(new int[] {followCount, followerCount});
+            }
+            else
+            {
+                var following = _context.UsersFollower
+                    .Where(uf => uf.follower == username)
+                    .Select(uf => uf.following);
+                return Ok(following);
+            }
 
         }
 
@@ -71,7 +82,7 @@ namespace MidwestMusicDB.Server.Controllers
         [Route("login")]
         public async Task<IActionResult> Post(LoginRequest loginRequest)
         {
-            var u = await _context.Users.FirstOrDefaultAsync(a => 
+            var u = await _context.Users.FirstOrDefaultAsync(a =>
                 a.username == loginRequest.username && a.password == loginRequest.password);
             if (u != null)
             {
@@ -80,9 +91,29 @@ namespace MidwestMusicDB.Server.Controllers
                 await Put(u);
                 return Ok();
             }
+
             Console.WriteLine("Bad user input");
             return BadRequest("Username or password is incorrect");
         }
-        
+
+        [HttpPost]
+        [Route("{followee}/{follower}")]
+        public async Task<IActionResult> Post(string followee, string follower)
+        {
+            _context.UsersFollower.Add(new UserFollower() {follower = follower, following = followee});
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpDelete("{followee}/{follower}")]
+        public async Task<IActionResult> Delete(string followee, string follower)
+        {
+            var uf =
+                _context.UsersFollower.Single(userF => userF.follower == follower && userF.following == followee);
+            _context.Remove(uf);
+            await _context.SaveChangesAsync();
+            return Ok();
+
+        }
     }
 }

@@ -1,0 +1,43 @@
+@page "/{username}/following"
+@inject HttpClient client
+@inject IJSRuntime js
+<a href="/@username">Back</a>
+<h3>Following</h3>
+@if (following == null)
+{
+    <p>Loading .......</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var u in following)
+        {
+            <tr>
+                <td>@u</td>
+                <td><button class="btn btn-danger" @onclick="@(()=> Unfollow(u))">Unfollow</button></td>
+                
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+@code {
+    [Parameter] public string username { get; set; }
+    string[] following { get; set; }
+
+    async Task Unfollow(string followee)
+    {
+        await client.DeleteAsync($"/api/user/{followee}/follower");
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        following = await client.GetJsonAsync<string[]>($"api/user/{username}/{2}");
+    }
+
+}

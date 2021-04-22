@@ -96,6 +96,12 @@ namespace MidwestMusicDB.Server.Controllers
                     Console.WriteLine("End Song search");
                     return Ok(songsFromGenres);
                 }
+                case "user":
+                {
+                    var users = await _context.Users.ToListAsync();
+                    var user_search = users.Where(u => u.email.Contains(searchString));
+                    return Ok(user_search);
+                }
                 default:
                 {
                     return BadRequest();
