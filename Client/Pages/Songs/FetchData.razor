@@ -14,7 +14,7 @@
 
 @if (songs == null)
 {
-    <text>Loading ...</text>
+    <text>Search for a song</text>
 }
 else if (songs.Length == 0)
 {
@@ -28,7 +28,9 @@ else
             <th>Title</th>
             <th>Duration</th>
             <th>Release Date</th>
-            <th></th>
+            <th>Artits</th>
+            <th>Album</th>
+            <th>Listen Count</th>
         </tr>
         </thead>
         <tbody>
@@ -57,11 +59,12 @@ else
 
     
     
-    
+    SongComplete[] songsComplete { get; set; }
     Song[] songs { get; set; }
     protected override async Task OnInitializedAsync()
     {
-        songs = await client.GetJsonAsync<Song[]>("api/search");
+        //songs = await client.GetJsonAsync<Song[]>("/song");
+        //songsComplete = await client.GetJsonAsync<SongComplete[]>($"api/song/getfull/{1}");
     }
 
     async Task Search()

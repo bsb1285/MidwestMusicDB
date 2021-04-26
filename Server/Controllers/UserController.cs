@@ -38,16 +38,16 @@ namespace MidwestMusicDB.Server.Controllers
             }
             else if (data == 1)
             {
-                var followCount = _context.UsersFollower.Count(uf => uf.follower == username);
-                var followerCount = _context.UsersFollower.Count(uf => uf.following == username);
+                var followCount = _context.UsersFollower.Count(uf => uf.follower_username == username);
+                var followerCount = _context.UsersFollower.Count(uf => uf.username == username);
                 return Ok(new int[] {followCount, followerCount});
 
             }
             else
             {
                 var following = _context.UsersFollower
-                    .Where(uf => uf.follower == username)
-                    .Select(uf => uf.following);
+                    .Where(uf => uf.follower_username == username)
+                    .Select(uf => uf.username);
                 return Ok(following);
             }
 
@@ -96,24 +96,6 @@ namespace MidwestMusicDB.Server.Controllers
             return BadRequest("Username or password is incorrect");
         }
 
-        [HttpPost]
-        [Route("{followee}/{follower}")]
-        public async Task<IActionResult> Post(string followee, string follower)
-        {
-            _context.UsersFollower.Add(new UserFollower() {follower = follower, following = followee});
-            await _context.SaveChangesAsync();
-            return Ok();
-        }
-
-        [HttpDelete("{followee}/{follower}")]
-        public async Task<IActionResult> Delete(string followee, string follower)
-        {
-            var uf =
-                _context.UsersFollower.Single(userF => userF.follower == follower && userF.following == followee);
-            _context.Remove(uf);
-            await _context.SaveChangesAsync();
-            return Ok();
-
-        }
+        
     }
 }

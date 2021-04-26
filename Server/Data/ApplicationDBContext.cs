@@ -48,8 +48,10 @@ namespace MidwestMusicDB.Server.Data
             modelBuilder.Entity<SongGenre>().HasAlternateKey(sg => sg.title);
             modelBuilder.Entity<UserSong>().HasKey(sg => sg.username);
             modelBuilder.Entity<UserSong>().HasAlternateKey(sg => sg.title);
-            modelBuilder.Entity<UserFollower>().HasKey(u => u.following);
-            modelBuilder.Entity<UserFollower>().HasAlternateKey(u => u.follower);
+            modelBuilder.Entity<UserFollower>().HasKey(u => u.username);
+            modelBuilder.Entity<UserFollower>().HasAlternateKey(u => u.follower_username);
+            modelBuilder.Entity<Song>().HasIndex(s => s.title);
+            
 
 
 

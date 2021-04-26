@@ -33,11 +33,11 @@ else
 
     async Task Unfollow(string followee)
     {
-        await client.DeleteAsync($"/api/user/{followee}/follower");
+        await client.DeleteAsync($"/api/follower/{followee}/{username}");
     }
     protected override async Task OnInitializedAsync()
     {
-        following = await client.GetJsonAsync<string[]>($"api/user/{username}/{2}");
+        following = await client.GetJsonAsync<string[]>($"api/follower/{username}");
     }
 
 }

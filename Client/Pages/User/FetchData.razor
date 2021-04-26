@@ -4,11 +4,8 @@
 
 
 <h3>Users</h3>
-<small>Add as many users as you wish.</small>
-<div class="form-group">
-    <a class="btn btn-success" href="user/create"><i class="oi oi-plus"></i>Create New</a>
-</div>
 <br>
+<SearchForm ButtonText="Search" searchModel="@_searchModel" OnValidSubmit="@Search"></SearchForm>
 @if (users == null)
 {
     <text>Loading ...</text>
@@ -39,8 +36,15 @@ else
                     <td>@u.email</td>
                     <td>@u.last_access_date</td>
                     <td>
+                      @if ( isFollowing(u.username))
+                      {
+                          <button class="btn btn-danger" @onclick="@(() => UnFollow(u.username))">Follow</button>
+                      }
+                      else
+                      {
+                          <button class="btn btn-danger" @onclick="@(() => Follow(u.username))">Follow</button>  
+                      }
                         
-                        <button class="btn btn-danger" @onclick="@(() => Follow(u.username))">Follow</button>
                     </td>
                 </tr>
             }
@@ -53,7 +57,6 @@ else
     User[] users { get; set; }
     protected override async Task OnInitializedAsync()
     {
-        //users = await client.GetFromJsonAsync<User[]>("api/user");
         users = await client.GetJsonAsync<User[]>("api/user");
     }
 
@@ -62,14 +65,18 @@ else
         var search_type = "user";
         users = await client.GetJsonAsync<User[]>($"api/search/{_searchModel.SearchString}/{search_type}");
     }
-    async Task Follow(string username)
+    async Task Follow(string followee)
     {
-        
-        // var user = users.First(x => x.username == username);
-        // if (await js.InvokeAsync<bool>("confirm", $"Do you want to delete {user.first_name}'s ({user.username}) Record?"))
-        // {
-        //     await client.DeleteAsync($"api/user/{username}");
-        //     await OnInitializedAsync();
-        // }
+        await client.PostJsonAsync($"api/follower/{followee}/{this.username}", username);
+    }
+
+    async Task UnFollow(string followee)
+    {
+        await client.DeleteAsync($"api/follower/{followee}/{this.username}");
+    }
+
+    bool isFollowing(string followee)
+    {
+        return  client.GetJsonAsync<bool>($"api/follower/{followee}/{this.username}").Result;
     }
 }

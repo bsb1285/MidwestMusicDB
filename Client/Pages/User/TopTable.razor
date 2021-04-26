@@ -1,0 +1,28 @@
+<h3>@name</h3>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Rank</th>
+        <th>@dataType</th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (topData != null)
+    {
+        @for (var i = 0; i < topData.Length; i++)
+        {
+            <td>@(i + 1)</td>
+            <td>@topData[i]</td>
+        }    
+    }
+    else
+    {
+    <td>Loading...</td>
+    }
+    </tbody>
+</table>
+@code {
+    [Parameter] public string name { get; set; }
+    [Parameter] public string[] topData { get; set; }
+    [Parameter] public string dataType { get; set; }
+}

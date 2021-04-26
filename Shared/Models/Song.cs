@@ -2,6 +2,7 @@ using System;
 
 namespace MidwestMusicDB.Shared.Models
 {
+    
     public class Song
     {
         public string title { get; set; }

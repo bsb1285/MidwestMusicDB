@@ -20,10 +20,8 @@ namespace MidwestMusicDB.Server.Controllers
         public SearchController(ApplicationDBContext context)
         {
             this._context = context;
-            
         }
 
-        
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -50,8 +48,8 @@ namespace MidwestMusicDB.Server.Controllers
                         //Console.WriteLine(songs_new);
                     }
                     Console.WriteLine("End Song search");
-            
-                    return Ok(search_songs);
+                    
+                    return Ok(BuildCompleteSong(search_songs));
                 }
                 case "artist":
                 {
@@ -109,7 +107,22 @@ namespace MidwestMusicDB.Server.Controllers
             }
         }
 
-        
+        private async Task<List<SongComplete>> BuildCompleteSong(List<Song> searchSongs)
+        {
+            var completeSongs = new List<SongComplete>();
+            foreach (Song s in searchSongs)
+            {
+
+                var artist_song = await _context.ArtistsSong.FirstAsync(song => song.title == s.title);
+                var artist = artist_song.artist_name;
+                var albums = await _context.SongOnAlbum.FirstAsync(song => song.title == s.title);
+                var album = albums.album_name;
+                var track = albums.track_number;
+                completeSongs.Add(new SongComplete(){album = album, artist = artist, trackNumber = track, song = s});
+            }
+
+            return completeSongs;
+        }
     }
     
     

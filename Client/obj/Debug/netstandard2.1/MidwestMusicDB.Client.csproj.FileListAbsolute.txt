@@ -123,3 +123,7 @@
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Shared/SearchForm.razor.g.cs
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/Playlist/PlaylistTable.razor.g.cs
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/Playlist/PlaylistTable.razor.g.cs
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/User/Following.razor.g.cs
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/User/Following.razor.g.cs
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/User/TopTable.razor.g.cs
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/User/TopTable.razor.g.cs

@@ -28,13 +28,6 @@ namespace MidwestMusicDB.Server.Controllers
             var playlistsForUsers = playlists.Where(p => ids.Contains(p.id));
             return Ok(playlistsForUsers);
         }
-        // [HttpGet("{username}/{id}")]
-        // public async Task<IActionResult> Get(string username, int id)
-        // {
-        //     var userPlaylists =  _context.UsersPlaylist.Where(up => up.username == username).Select(up => up.id);
-        //     var playlists = _context.Playlist.Where(p => userPlaylists.Contains(p.id));
-        //     return Ok(playlists);
-        // }
 
         [HttpGet("{id}/{songs}")]
         public async Task<IActionResult> Get(int id, bool songs)
