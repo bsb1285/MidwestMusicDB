@@ -98,11 +98,30 @@ namespace MidwestMusicDB.Server.Controllers
                 {
                     var users = await _context.Users.ToListAsync();
                     var user_search = users.Where(u => u.email.Contains(searchString));
+                    
+                    Console.WriteLine("End user search");
                     return Ok(user_search);
                 }
                 default:
                 {
-                    return BadRequest();
+                    var users = await _context.Users.ToListAsync();
+                    var user_search = users.Where(u => u.email.Contains(searchString));
+                    var userCompleteList = new List<UserComplete>();
+                    foreach (var user in user_search)
+                    {
+                        var userFollower = await _context.UsersFollower.ToListAsync();
+                        if (userFollower.Exists(uf =>
+                            uf.follower_username.Equals(searchType) && uf.username.Equals(user.username)))
+                        {
+                            userCompleteList.Add(new UserComplete() {user = user, isFollowed = true});
+                        }
+                        else
+                        {
+                            userCompleteList.Add(new UserComplete() {user = user, isFollowed = false});
+                        }
+                    }
+
+                    return Ok(userCompleteList);
                 }
             }
         }
