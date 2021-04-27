@@ -8,7 +8,7 @@
 <SearchForm ButtonText="Search" searchModel="@_searchModel" OnValidSubmit="@Search"></SearchForm>
 @if (users == null)
 {
-    <text>Loading ...</text>
+    <text>Search for a User</text>
 }
 else if (users.Length == 0)
 {
@@ -57,7 +57,7 @@ else
     User[] users { get; set; }
     protected override async Task OnInitializedAsync()
     {
-        users = await client.GetJsonAsync<User[]>("api/user");
+        //users = await client.GetJsonAsync<User[]>("api/user");
     }
 
     async Task Search()

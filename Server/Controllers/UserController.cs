@@ -38,8 +38,8 @@ namespace MidwestMusicDB.Server.Controllers
             }
             else if (data == 1)
             {
-                var followCount = _context.UsersFollower.Count(uf => uf.follower_username == username);
-                var followerCount = _context.UsersFollower.Count(uf => uf.username == username);
+                var followCount = await _context.UsersFollower.CountAsync(uf => uf.follower_username == username);
+                var followerCount = await _context.UsersFollower.CountAsync(uf => uf.username == username);
                 return Ok(new int[] {followCount, followerCount});
 
             }

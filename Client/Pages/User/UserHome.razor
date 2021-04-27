@@ -18,14 +18,6 @@
 </table>
 <h1> Playlists</h1>
 <PlaylistTable Playlists="@_playlists" Username="@username"></PlaylistTable>
-<h1>Top Metrics</h1>
-<h2>Your Metrics</h2>
-<TopTable name="Top Artists" dataType="Artist" topData="@topAritsts"></TopTable>
-<TopTable name="For you" dataType="Song" topData="@foryou"></TopTable>
-<h2>Global Metrics</h2>
-<TopTable name="Top Songs" dataType="Song" topData="@topSongs"></TopTable>
-<TopTable name="Top Songs Among My Friends" dataType="Song" topData="@topSongsFriends"></TopTable>
-<TopTable name="Top Genres" dataType="Genre" topData="@topGenre"></TopTable>
 @code {
 
     [Parameter]
@@ -34,11 +26,7 @@
     int followers { get; set; }
     int following { get; set; }
     Playlist[] _playlists { get; set; }
-    string[] topAritsts { get; set; }
-    string[] topSongs { get; set; }
-    string[] topGenre { get; set; }
-    string[] topSongsFriends { get; set; }
-    string[] foryou { get; set; }
+    
     
     protected override async Task OnInitializedAsync()
     {
@@ -48,19 +36,6 @@
 
         _playlists = await client.GetJsonAsync<Playlist[]>($"api/playlist/{username}");
 
-        var metricType = "artists";
-        topAritsts = await client.GetJsonAsync<string[]>($"api/metric/{username}/{metricType}");
         
-        metricType = "songs";
-        //topSongs = await client.GetJsonAsync<string[]>($"api/metric/global/{metricType}");
-
-        metricType = "friends";
-        topSongsFriends = await client.GetJsonAsync<string[]>($"api/metric/{username}/{metricType}");
-
-        metricType = "genre";
-        topGenre = await client.GetJsonAsync<string[]>($"api/metric/global/{metricType}");
-
-        metricType = "foryou";
-        foryou = await client.GetJsonAsync<string[]>($"api/metric/{username}/{metricType}");
     }
 }
