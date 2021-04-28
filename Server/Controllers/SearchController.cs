@@ -49,7 +49,7 @@ namespace MidwestMusicDB.Server.Controllers
                     }
                     Console.WriteLine("End Song search");
                     
-                    return Ok(BuildCompleteSong(search_songs));
+                    return Ok(await BuildCompleteSong(search_songs));
                 }
                 case "artist":
                 {
@@ -126,7 +126,53 @@ namespace MidwestMusicDB.Server.Controllers
             }
         }
 
-        private async Task<List<SongComplete>> BuildCompleteSong(List<Song> searchSongs)
+        [HttpGet("{searchString}/{searchType}/{username}")]
+        public async Task<IActionResult> Get(string searchString, string searchType, string username)
+        {
+            switch (searchType)
+            {
+                case "song":
+                {
+                    var songs = await _context.Song.ToListAsync();
+                    var search_songs = new List<Song>();
+                    var songs_new = from s in songs
+                        select s;
+
+                    if (!string.IsNullOrEmpty(searchString))
+                    {
+                        search_songs.AddRange(songs_new
+                            .Where(s => s.title.Contains(searchString)));
+
+                    }
+
+                    Console.WriteLine("End Song search");
+
+                    return Ok(await BuildCompleteSong(search_songs, username));
+                }
+                case "artist":
+                {
+                    var artists = await _context.Artist.ToListAsync();
+                    var search_artists = artists.Where(a => a.artist_name.Contains(searchString))
+                        .Select(a_ => a_.artist_name).ToList();
+                    
+                    var art_songs = from art_song in _context.ArtistsSong
+                        where search_artists.Contains(art_song.artist_name)
+                        select art_song.title;
+
+                    var songFromArtist = from song in _context.Song
+                        where art_songs.Contains(song.title)
+                        select song;
+                    Console.WriteLine("End Song search");
+                    return Ok(songFromArtist);
+                }
+                default:
+                    return Ok();
+            }
+            
+            
+        }
+
+        private async Task<List<SongComplete>> BuildCompleteSong(List<Song> searchSongs, string username = null)
         {
             var completeSongs = new List<SongComplete>();
             foreach (Song s in searchSongs)
@@ -136,8 +182,18 @@ namespace MidwestMusicDB.Server.Controllers
                 var artist = artist_song.artist_name;
                 var albums = await _context.SongOnAlbum.FirstAsync(song => song.title == s.title);
                 var album = albums.album_name;
-                var track = albums.track_number;
-                completeSongs.Add(new SongComplete(){album = album, artist = artist, trackNumber = track, song = s});
+                var trackList = await _context.UserSong.ToListAsync();
+                var track = 0;
+                try
+                {
+                    track = trackList.Single(t => t.title == s.title && t.username.Equals(username)).listen_count;
+                }
+                catch
+                {
+                    track = 0;
+                }
+
+                completeSongs.Add(new SongComplete(){album = album, artist = artist, listenCount = track, song = s});
             }
 
             return completeSongs;

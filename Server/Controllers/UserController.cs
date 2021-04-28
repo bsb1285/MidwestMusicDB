@@ -28,29 +28,32 @@ namespace MidwestMusicDB.Server.Controllers
             return Ok(users);
         }
 
-        [HttpGet("{id}/{data}")]
+        [HttpGet("{username}/{data}")]
         public async Task<IActionResult> Get(string username, int data)
         {
-            if (data == 0)
+            switch (data)
             {
-                var users = await _context.Users.FirstOrDefaultAsync(a => a.username == username);
-                return Ok(users);
+                case 0:
+                {
+                    var users = await _context.Users.FirstOrDefaultAsync(a => a.username == username);
+                    return Ok(users);
+                }
+                case 1:
+                {
+                    var userFollower = await _context.UsersFollower.ToListAsync();
+                    
+                    var followCount =  userFollower.Count(uf => uf.follower_username.Equals(username) );
+                    var followerCount =  userFollower.Count(uf => uf.username.Equals(username));
+                    return Ok(new int[] {followCount, followerCount});
+                }
+                default:
+                {
+                    var following = _context.UsersFollower
+                        .Where(uf => uf.follower_username == username)
+                        .Select(uf => uf.username);
+                    return Ok(following);
+                }
             }
-            else if (data == 1)
-            {
-                var followCount = await _context.UsersFollower.CountAsync(uf => uf.follower_username == username);
-                var followerCount = await _context.UsersFollower.CountAsync(uf => uf.username == username);
-                return Ok(new int[] {followCount, followerCount});
-
-            }
-            else
-            {
-                var following = _context.UsersFollower
-                    .Where(uf => uf.follower_username == username)
-                    .Select(uf => uf.username);
-                return Ok(following);
-            }
-
         }
 
         [HttpPost]

@@ -47,7 +47,7 @@ namespace MidwestMusicDB.Server.Controllers
             }
             catch (Exception e)
             {
-                var userListen = new UserSong() {username = username, title = title, listen_count = 0};
+                var userListen = new UserSong() {username = username, title = title, listen_count = 1};
                 _context.Add(userListen);
                 await _context.SaveChangesAsync();
             }
@@ -68,7 +68,7 @@ namespace MidwestMusicDB.Server.Controllers
                 var albums = await _context.SongOnAlbum.FirstAsync(song => song.title == s.title);
                 var album = albums.album_name;
                 var track = albums.track_number;
-                completeSongs.Add(new SongComplete(){album = album, artist = artist, trackNumber = track, song = s});
+                completeSongs.Add(new SongComplete(){album = album, artist = artist, listenCount = track, song = s});
             }
 
             return Ok(completeSongs);

@@ -7,6 +7,8 @@ using MidwestMusicDB.Shared.Models;
 
 namespace MidwestMusicDB.Server.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class FollowerController : ControllerBase
     {
         private readonly ApplicationDBContext _context;
@@ -41,6 +43,15 @@ namespace MidwestMusicDB.Server.Controllers
             var uf = _context.UsersFollower.ContainsAsync(new UserFollower()
                 {follower_username = follower, username = followee});
             return Ok(uf);
+        }
+
+        [HttpGet("{username}")]
+        public async Task<IActionResult> Get(string username)
+        {
+            var uf = await _context.UsersFollower.ToListAsync();
+            var list = uf.Where(u => u.username.Equals(username))
+                .Select(user => user.follower_username);
+            return Ok(list);
         }
     }
 }

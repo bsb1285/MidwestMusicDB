@@ -1,0 +1,53 @@
+@inject HttpClient client
+
+@if (songsComplete == null)
+{
+    <text>Search for a song</text>
+}
+else if (songsComplete.Length == 0)
+{
+    <text>No results</text>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Duration</th>
+            <th>Release Date</th>
+            <th>Artits</th>
+            <th>Album</th>
+            <th>Listen Count</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var s in songsComplete)
+        {
+            <tr>
+                <td>@s.song.title</td>
+                <td>@s.song.length</td>
+                <td>@s.song.song_release_date</td>
+                <td>@s.artist</td>
+                <td>@s.album</td>
+                <td>@s.listenCount</td>
+                <td>
+                    <a class="btn btn-success" href="playlists/@username/@s.song.title/add">Add to Playlist</a>
+                    <button class="btn btn-success" @onclick="() => Listen(s.song.title)">Listen</button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    
+}
+
+@code {
+    [Parameter] public SongComplete[] songsComplete { get; set; }
+    [Parameter] public string username { get; set; }
+    async Task Listen(string title)
+    {
+        await client.PutJsonAsync($"api/song/listen/{username}/{title}", title);
+        
+    }
+}

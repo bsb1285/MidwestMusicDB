@@ -1,9 +1,10 @@
 @page "/user/{username}"
 @inject HttpClient client
 @inject IJSRuntime js
-
+@inject NavigationManager uriHeler
 
 <h3>Users</h3>
+<a href="/@username">Back</a>
 <br>
 <SearchForm ButtonText="Search" searchModel="@_searchModel" OnValidSubmit="@Search"></SearchForm>
 @if (users == null)
@@ -31,7 +32,7 @@ else
             {
                 
                 {
-                    var u = uC.user;
+                     u = uC.user;
                 }
                 <tr>
                     <td>u.username</td>
@@ -58,6 +59,7 @@ else
     [Parameter] public string username { get; set; }
     SearchModel _searchModel = new SearchModel();
     UserComplete[] users { get; set; }
+    User u { get; set; }
     protected override async Task OnInitializedAsync()
     {
         //users = await client.GetJsonAsync<User[]>("api/user");
@@ -72,6 +74,8 @@ else
     async Task Follow(string followee)
     {
         await client.PostJsonAsync($"api/follower/{followee}/{this.username}", username);
+        
+        
     }
 
     async Task UnFollow(string followee)

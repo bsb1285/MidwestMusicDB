@@ -13,45 +13,6 @@
    
 </div>
 
-@if (songs == null)
-{
-    <text>Loading ...</text>
-}
-else if (songs.Length == 0)
-{
-    <text>Search for a song</text>
-}
-else
-{
-    
-    
-    
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Duration</th>
-            <th>Release Date</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var s in songs)
-        {
-            <tr>
-                <td>@s.title</td>
-                <td>@s.length</td>
-                <td>@s.song_release_date</td>
-                <td>
-                    <a class="btn btn-success" href="playlists/@username/@s.title/add">Add To playlist</a>
-                    <button class="btn btn-success" @onclick="@(() => Listen(s.title))">Listen</button>
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
-    
-}
 @code {
     [Parameter]
     public string username { get; set; }
@@ -62,7 +23,7 @@ else
     
     
     
-    Song[] songs { get; set; }
+    SongComplete[] songs { get; set; }
     protected override async Task OnInitializedAsync()
     {
     //songs = await client.GetJsonAsync<Song[]>("api/search");
@@ -72,7 +33,7 @@ else
     {
         var search_type = "album";
         Console.WriteLine($"SearchString: {_searchModel.SearchString}");
-        songs = await client.GetJsonAsync<Song[]>($"api/search/{_searchModel.SearchString}/{search_type}");
+        songs = await client.GetJsonAsync<SongComplete[]>($"api/search/{_searchModel.SearchString}/{search_type}");
         Console.WriteLine("Done Search");
         uriHelper.NavigateTo($"AlbumJust/{username}");
     }
