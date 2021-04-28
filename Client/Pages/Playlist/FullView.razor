@@ -13,7 +13,7 @@
 }
 else if (songsOnPlaylist.Length == 0)
 {
-    <a href="/songs/{@username}">Add some songs</a>
+    <a href="/song/@username">Add some songs</a>
 }
 else
 {
@@ -42,7 +42,7 @@ else
         }
         </tbody>
     </table>
-    <a href="/songs/@username">Add more songs</a>
+    <a href="/song/@username">Add more songs</a>
 }
 @code {
     [Parameter] public string username { get; set; }
