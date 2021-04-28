@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -22,10 +23,13 @@ namespace MidwestMusicDB.Server.Controllers
         public async Task<IActionResult> Get(string username)
         {
             var usersPlaylists = await _context.UsersPlaylist.ToListAsync();
-            var ids = usersPlaylists.Where(playlist => playlist.username == username).Select(p => p.id);
-
+            var ids = usersPlaylists.Where(playlist => playlist.username.Equals(username)).Select(p => p.id);
+            Console.WriteLine($"User: {username} has {ids.ToList().Count} playlists");
+            
             var playlists = await _context.Playlist.ToListAsync();
-            var playlistsForUsers = playlists.Where(p => ids.Contains(p.id));
+            var idsList = ids.ToList();
+            var playlistsForUsers = playlists.Where(p => idsList.Exists(i => i == p.id));
+            Console.WriteLine($"Playlists found: {playlistsForUsers.ToList().Count}");
             return Ok(playlistsForUsers);
         }
 
@@ -50,7 +54,8 @@ namespace MidwestMusicDB.Server.Controllers
         [HttpPost("{username}")]
         public async Task<IActionResult> Post(Playlist playlist, string username)
         {
-            var next_id = _context.Playlist.Last().id + 1;
+            var next_id = _context.Playlist.OrderBy(p=>p.id).Last().id + 1;
+            Console.WriteLine($"New id: {next_id}");
             playlist.id = next_id;
             UsersPlaylist up = new UsersPlaylist {id = playlist.id, username = username};
             _context.Add(up);
@@ -96,5 +101,6 @@ namespace MidwestMusicDB.Server.Controllers
             await _context.SaveChangesAsync();
             return Ok();
         }
+
     }
 }

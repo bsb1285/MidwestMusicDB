@@ -5,7 +5,7 @@
 @if (p != null)
 {
     <h3>@p.title</h3>
-    <Form ButtonText="Change Name" playlist="@p" OnValidSubmit="@Update"></Form>
+    <PlaylistForm ButtonText="Change Name" playlist="@p" OnValidSubmit="@Update"></PlaylistForm>
 }
 @if (songsOnPlaylist == null)
 {

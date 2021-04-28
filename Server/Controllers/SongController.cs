@@ -40,7 +40,7 @@ namespace MidwestMusicDB.Server.Controllers
         {
             try
             {
-                var userListen = _context.UserSong.Single(us => us.title == title && us.username == username);
+                var userListen = _context.UserSong.Single(us => us.title.Equals(title) && us.username.Equals(username));
                 userListen.listen_count += 1;
                 _context.Update(userListen);
                 await _context.SaveChangesAsync();

@@ -35,10 +35,5 @@
         uriHelper.NavigateTo($"song/{username}");
     }
     
-    async Task Listen(string title)
-    {
-        await client.PutJsonAsync($"api/song/listen/{username}/{title}", title);
-        uriHelper.NavigateTo($"song/{username}");
-    }
 
 }

@@ -137,11 +137,12 @@ namespace MidwestMusicDB.Server.Controllers
                     var search_songs = new List<Song>();
                     var songs_new = from s in songs
                         select s;
+                    
 
                     if (!string.IsNullOrEmpty(searchString))
                     {
                         search_songs.AddRange(songs_new
-                            .Where(s => s.title.Contains(searchString)));
+                            .Where(s => s.title.ToLower().Contains(searchString.ToLower())));
 
                     }
 
@@ -165,6 +166,7 @@ namespace MidwestMusicDB.Server.Controllers
                     Console.WriteLine("End Song search");
                     return Ok(songFromArtist);
                 }
+                
                 default:
                     return Ok();
             }

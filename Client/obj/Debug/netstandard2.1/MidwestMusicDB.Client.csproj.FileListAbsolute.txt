@@ -103,14 +103,10 @@
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/User/UserHome.razor.g.cs
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/Songs/FetchData.razor.g.cs
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/User/UserHome.razor.g.cs
-/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/Playlist/FetchData.razor.g.cs
-/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/Playlist/FetchData.razor.g.cs
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/Playlist/AddToPlaylist.razor.g.cs
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/Playlist/Create.razor.g.cs
-/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/Playlist/Form.razor.g.cs
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/Playlist/AddToPlaylist.razor.g.cs
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/Playlist/Create.razor.g.cs
-/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/Playlist/Form.razor.g.cs
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/Playlist/FullView.razor.g.cs
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/Playlist/FullView.razor.g.cs
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/Album/FetchData.razor.g.cs
@@ -131,3 +127,5 @@
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/User/UserMetrics.razor.g.cs
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/Songs/SongCompleteTable.razor.g.cs
 /Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/Songs/SongCompleteTable.razor.g.cs
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/RazorDeclaration/Pages/Playlist/PlaylistForm.razor.g.cs
+/Users/benbaker/Documents/School/CSCI320/MidwestMusicDB/Client/obj/Debug/netstandard2.1/Razor/Pages/Playlist/PlaylistForm.razor.g.cs

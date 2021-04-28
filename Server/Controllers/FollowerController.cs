@@ -49,8 +49,8 @@ namespace MidwestMusicDB.Server.Controllers
         public async Task<IActionResult> Get(string username)
         {
             var uf = await _context.UsersFollower.ToListAsync();
-            var list = uf.Where(u => u.username.Equals(username))
-                .Select(user => user.follower_username);
+            var list = uf.Where(u => u.follower_username.Equals(username))
+                .Select(user => user.username);
             return Ok(list);
         }
     }
