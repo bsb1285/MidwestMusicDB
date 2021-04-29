@@ -23,7 +23,7 @@ namespace MidwestMusicDB.Server.Controllers
         [HttpGet("{username}/{type}")]
         public async Task<IActionResult> Get(string username ,string type)
         {
-            Console.WriteLine("In Get");
+            
             switch (type)
             {
                 case "artists":
@@ -58,7 +58,7 @@ namespace MidwestMusicDB.Server.Controllers
 
         private List<string> GetTopArtists(string username, int amount)
         {
-            Console.WriteLine("Start Artists");
+            
             var topSongs = GetTopSongTitles(username, amount);
             var topArtists = new List<String>();
             foreach (var title in topSongs)
@@ -68,7 +68,7 @@ namespace MidwestMusicDB.Server.Controllers
                     .artist_name);
             }
 
-            Console.WriteLine("End Artists");
+            
             return topArtists;
         }
 
@@ -139,7 +139,7 @@ namespace MidwestMusicDB.Server.Controllers
 
         private async Task<IEnumerable<string>> GetTopSongsFriends(string username, int amount)
         {
-            var friends = await _context.UsersFollower.Where(uf => uf.follower_username == username)
+            var friends = await _context.UsersFollower.Where(uf => uf.follower_username.Equals(username))
                 .Select(u => u.username)
                 .ToListAsync();
             var userSongs = await _context.UserSong.ToListAsync();
@@ -147,8 +147,9 @@ namespace MidwestMusicDB.Server.Controllers
             var friendSongs = new Dictionary<string, int>();
             foreach (var friend in friends)
             {
-                var usersong =  userSongs.Where(us => us.username == friend).ToList();
+                var usersong =  userSongs.Where(us => us.username.Equals(friend)).ToList();
                 var songDict = CreateSongDict(usersong);
+                
                 foreach (var kp in songDict)
                 {
                     if (!friendSongs.ContainsKey(kp.Key))
@@ -161,6 +162,7 @@ namespace MidwestMusicDB.Server.Controllers
                     }
                 }
             }
+            Console.WriteLine(friendSongs.Count);
             var top = friendSongs.OrderByDescending(kp => kp.Value)
                 .Select(kp => kp.Key).Take(amount);
             
@@ -194,7 +196,7 @@ namespace MidwestMusicDB.Server.Controllers
             for (var i = 0; i < reccomendAmount; i++)
             {
                 var rand = new Random();
-                var listType = rand.Next(0, 3);
+                var listType = rand.Next(0, 2);
                 switch (listType)
                 {
                     case 0:
@@ -213,9 +215,9 @@ namespace MidwestMusicDB.Server.Controllers
                     case 1:
                         try
                         {
-                            var index = rand.Next(0, topGenreSongsList.Count);
-                            toReturn.Add(topGenreSongsList[index]);
-                            topGenreSongsList.RemoveAt(index);
+                            var index = rand.Next(0, topArtistsList.Count);
+                            toReturn.Add(topArtistsList[index]);
+                            topArtistsList.RemoveAt(index);
                             break;
                         }
                         catch (Exception e)

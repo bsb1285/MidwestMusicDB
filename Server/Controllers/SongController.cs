@@ -22,7 +22,7 @@ namespace MidwestMusicDB.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            Console.WriteLine("Get request");
+            
             var users = await _context.Song.ToListAsync();
             return Ok(users);
         }
@@ -30,7 +30,7 @@ namespace MidwestMusicDB.Server.Controllers
         [HttpGet("{title}")]
         public async Task<IActionResult> Get(string title)
         {
-            Console.WriteLine("Get request");
+            
             var users = await _context.Song.FirstOrDefaultAsync(s => s.title == title);
             return Ok(users);
         }
@@ -42,7 +42,7 @@ namespace MidwestMusicDB.Server.Controllers
             {
                 var userListen = _context.UserSong.Single(us => us.title.Equals(title) && us.username.Equals(username));
                 userListen.listen_count += 1;
-                Console.WriteLine($"Updated {title} listen count to {userListen.listen_count} for {username}");
+                
                 _context.Update(userListen);
                 await _context.SaveChangesAsync();
             }
@@ -50,7 +50,7 @@ namespace MidwestMusicDB.Server.Controllers
             {
                 var userListen = new UserSong() {username = username, title = title, listen_count = 1};
                 _context.Add(userListen);
-                Console.WriteLine($"Added {title} listen count to {userListen.listen_count} for {username}");
+                
                 await _context.SaveChangesAsync();
             }
 

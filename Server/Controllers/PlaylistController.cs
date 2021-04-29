@@ -29,7 +29,7 @@ namespace MidwestMusicDB.Server.Controllers
             var playlistsForUsers = playlists.Where(
                 playlist => usersPlaylists.Exists(up =>
                 {
-                    Console.WriteLine($"Playlist: {playlist.id}, UserPlaylist: {up.id}");
+                    
                     return up.username.Equals(username) && playlist.id == up.id;
                 }));
 
@@ -59,7 +59,7 @@ namespace MidwestMusicDB.Server.Controllers
         public async Task<IActionResult> Post(Playlist playlist, string username)
         {
             var next_id = _context.Playlist.OrderBy(p=>p.id).Last().id + 1;
-            Console.WriteLine($"New id: {next_id}");
+            
             playlist.id = next_id;
             UsersPlaylist up = new UsersPlaylist {id = playlist.id, username = username};
             _context.Add(up);
