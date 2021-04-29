@@ -163,10 +163,37 @@ namespace MidwestMusicDB.Server.Controllers
                     var songFromArtist = from song in _context.Song
                         where art_songs.Contains(song.title)
                         select song;
+
                     Console.WriteLine("End Song search");
-                    return Ok(songFromArtist);
+                    return Ok(await BuildCompleteSong(songFromArtist.ToList(), username));
                 }
-                
+                case "album":
+                {
+                    var albums = await _context.Album.ToListAsync();
+                    var search_albums = albums.Where(a => a.album_name.Contains(searchString))
+                        .Select(al => al.album_name);
+                    var alb_songs = from alb_song in _context.SongOnAlbum
+                        where search_albums.Contains(alb_song.title)
+                        select alb_song.title;
+                    var songFromAlbums = from songFromAlbum in _context.Song
+                        where alb_songs.Contains(songFromAlbum.title)
+                        select songFromAlbum;
+                    Console.WriteLine("End Song search");
+                    return Ok(await BuildCompleteSong(songFromAlbums.ToList(), username));
+                }
+                case "genre":
+                {
+                    var genres = await _context.Genre.ToListAsync();
+                    var search_genres = genres.Where(g => g.name.Contains(searchString)).Select(ge => ge.name);
+                    var gen_songs = from gen_song in _context.SongGenre
+                        where search_genres.Contains(gen_song.name)
+                        select gen_song.title;
+                    var songsFromGenres = from songsFromGenre in _context.Song
+                        where gen_songs.Contains(songsFromGenre.title)
+                        select songsFromGenre;
+                    Console.WriteLine("End Song search");
+                    return Ok(await BuildCompleteSong(songsFromGenres.ToList(), username));
+                }
                 default:
                     return Ok();
             }
@@ -176,6 +203,7 @@ namespace MidwestMusicDB.Server.Controllers
 
         private async Task<List<SongComplete>> BuildCompleteSong(List<Song> searchSongs, string username = null)
         {
+            Console.WriteLine(username);
             var completeSongs = new List<SongComplete>();
             foreach (Song s in searchSongs)
             {
@@ -185,16 +213,22 @@ namespace MidwestMusicDB.Server.Controllers
                 var albums = await _context.SongOnAlbum.FirstAsync(song => song.title == s.title);
                 var album = albums.album_name;
                 var trackList = await _context.UserSong.ToListAsync();
-                var track = 0;
+                var track = -1;
                 try
                 {
-                    track = trackList.Single(t => t.title == s.title && t.username.Equals(username)).listen_count;
+                    track = trackList.Single(us => us.title.Equals(s.title) && us.username.Equals(username))
+                        .listen_count;
                 }
                 catch
                 {
-                    track = 0;
+                    
                 }
 
+                if (track == -1)
+                {
+                    track = 0;
+                    
+                }
                 completeSongs.Add(new SongComplete(){album = album, artist = artist, listenCount = track, song = s});
             }
 

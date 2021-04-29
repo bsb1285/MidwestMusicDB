@@ -42,6 +42,7 @@ namespace MidwestMusicDB.Server.Controllers
             {
                 var userListen = _context.UserSong.Single(us => us.title.Equals(title) && us.username.Equals(username));
                 userListen.listen_count += 1;
+                Console.WriteLine($"Updated {title} listen count to {userListen.listen_count} for {username}");
                 _context.Update(userListen);
                 await _context.SaveChangesAsync();
             }
@@ -49,6 +50,7 @@ namespace MidwestMusicDB.Server.Controllers
             {
                 var userListen = new UserSong() {username = username, title = title, listen_count = 1};
                 _context.Add(userListen);
+                Console.WriteLine($"Added {title} listen count to {userListen.listen_count} for {username}");
                 await _context.SaveChangesAsync();
             }
 

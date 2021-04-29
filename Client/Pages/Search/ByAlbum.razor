@@ -1,0 +1,6 @@
+@page "/album/{username}"
+<SearchSongs username="@username" searchType="album"></SearchSongs>
+
+@code {
+    [Parameter] public string username { get; set; }
+}

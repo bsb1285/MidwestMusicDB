@@ -1,0 +1,26 @@
+@inject HttpClient client
+
+@inject NavigationManager uriHelper
+
+<a href="/@username">Home</a>
+<h3>Song List</h3>
+
+<SearchForm ButtonText="Search" searchModel="@_searchModel" OnValidSubmit="@Search"></SearchForm>
+<SongCompleteTable username="@username" songsComplete="@songsComplete"></SongCompleteTable>
+
+@code{
+
+    [Parameter] public string username { get; set; }
+    SongComplete[] songsComplete { get; set; }
+    SearchModel _searchModel = new SearchModel();
+    [Parameter] public string searchType { get; set; }
+    async Task Search()
+    {
+        
+        Console.WriteLine($"SearchString: {_searchModel.SearchString}");
+        songsComplete = await client.GetJsonAsync<SongComplete[]>($"api/search/{_searchModel.SearchString}/{searchType}/{username}");
+    
+        Console.WriteLine("Done Search");
+        uriHelper.NavigateTo($"song/{username}");
+    }
+}

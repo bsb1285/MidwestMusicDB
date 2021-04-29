@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -18,18 +19,21 @@ namespace MidwestMusicDB.Server.Controllers
         {
             _context = context;
         }
-
+        
         [HttpGet("{username}")]
         public async Task<IActionResult> Get(string username)
         {
             var usersPlaylists = await _context.UsersPlaylist.ToListAsync();
-            var ids = usersPlaylists.Where(playlist => playlist.username.Equals(username)).Select(p => p.id);
-            Console.WriteLine($"User: {username} has {ids.ToList().Count} playlists");
-            
             var playlists = await _context.Playlist.ToListAsync();
-            var idsList = ids.ToList();
-            var playlistsForUsers = playlists.Where(p => idsList.Exists(i => i == p.id));
-            Console.WriteLine($"Playlists found: {playlistsForUsers.ToList().Count}");
+
+            var playlistsForUsers = playlists.Where(
+                playlist => usersPlaylists.Exists(up =>
+                {
+                    Console.WriteLine($"Playlist: {playlist.id}, UserPlaylist: {up.id}");
+                    return up.username.Equals(username) && playlist.id == up.id;
+                }));
+
+            
             return Ok(playlistsForUsers);
         }
 

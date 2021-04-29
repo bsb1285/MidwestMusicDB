@@ -5,6 +5,9 @@
 
 <h3>UserHome</h3>
 <a href="/song/@username">Search for Songs</a>
+<a href="/album/@username">Search for Songs by Album</a>
+<a href="/genre/@username">Search for Songs by Genre</a>
+<a href="/artist/@username">Search for Songs by Artist</a>
 <a href="/user/@username">Search for Users</a>
 <table class="table table-striped">
     <thead>
@@ -16,7 +19,7 @@
     <td><a href="/@username/following">@following</a></td>
     </thead>
 </table>
-<h1> Playlists</h1>
+<h1> Playlists (@_playlists.Length)</h1>
 <PlaylistTable Playlists="@_playlists" Username="@username"></PlaylistTable>
 <a href="@username/metrics">Metrics</a>
 @code {

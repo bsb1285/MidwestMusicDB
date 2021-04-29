@@ -1,0 +1,18 @@
+@page "/song/{username}"
+
+
+<SearchSongs username="@username" searchType="song"  ></SearchSongs>
+@code {
+    [Parameter]
+    public string username { get; set; }
+
+    
+    protected override async Task OnInitializedAsync()
+    {
+        
+    }
+
+    
+    
+
+}

@@ -18,6 +18,9 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages\Authentication\Login.razor" />
     <_ContentIncludedByDefault Remove="Pages\Authentication\Register.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Album\FetchData.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Artist\FetchData.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Genre\FetchData.razor" />
   </ItemGroup>
 
 </Project>
